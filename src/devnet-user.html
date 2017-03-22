@@ -1,5 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../src/devnet-hexagonal-badges.html">
+
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-user">
@@ -10,7 +12,22 @@
     }
 
     .card {
-    	padding: 5%;
+    	padding-left: 0;
+    	padding-bottom: 0;
+    	padding-right: 0;
+    }
+
+    .card h2 {
+    	padding-left: 1em;
+    	border-left: 5px solid blue;
+    	float: left;
+    }
+
+    .card h3 {
+    	padding-left: 1em;
+    	border-left: 5px solid blue;
+    	float: left;
+    	margin-top: 0;
     }
 
     .left,
@@ -73,12 +90,20 @@
 		right: 25px;
 	}
 
+	.col-md-4,
+	.col-md-12 {
+		position: relative;;
+		min-height: 1px;
+	}
+
 	.col-md-4 {
-		position: relative;
-        min-height: 1px;
-        /*padding-right: 15px;
-        padding-left: 15px;*/
         width: 33.33333333%;
+	}
+
+	.col-md-12 {
+		width: 100%;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 
 	.col-md-4 .card {
@@ -91,8 +116,21 @@
 			float: left;
 		}
 
-	.container h1 {
+	.container h2 {
 		margin-top: 0;
+	}
+
+	.collection {
+    	font-size: 0;
+	}
+
+	.collection img {
+		display: inline-block;
+    	width: 50%;
+    	height: 50%;
+    	margin: 0;
+    }
+
 	}
 
     </style>
@@ -101,7 +139,7 @@
 
 			<button class="edit">edit</button>
 
-      	<div class="card">
+      	<div class="card" style="padding: 5%; margin-left: 15px; margin-right: 15px;">
 
       		<div class="left" style="text-align: center">
       			<img src="../images/devnet-octocat.png" alt="an images here">
@@ -133,30 +171,98 @@
     </div>
 
     <div class="container">
-    	<div>
-    		<span>My Skill</span>
+    <!-- Skills -->
+    	<div class="col-md-12">
+    		<span style="color:#91A2A8">My Skill</span>
     	</div>
 
     	<div class="col-md-4">
-    		<div class="card">
-    			<h1>PHP</h1>
-    			<p>"some text here"</p>
+    		<div class="card" style="padding-bottom: 5%">
+    			<h2>PHP</h2>
+    			<p style="margin-top: 3em; margin-left: 15px; margin-right: 15px;">Rank #123 from #10000</p>
+    			<p style="color: darkgrey; margin-left: 15px; margin-right: 15px;">"some text here"</p>
+    			<div class="badges" style="margin-left: 15px;">
+	        		<img src="../images/devnet-login-background.jpg" alt="an images here" style="margin-right: 5%">
+	        		<img src="../images/devnet-login-background.jpg" alt="an images here" style="margin-right: 5%">
+				</div>
     		</div>
     	</div>
 
     	<div class="col-md-4">
-    		<div class="card">
-    			<h1>C+</h1>
-    			<p>"some text here"</p>
+    		<div class="card" style="padding-bottom: 5%">
+    			<h2>C+</h2>
+    			<p style="margin-top: 3em; margin-left: 15px; margin-right: 15px;">Rank #123 from #10000</p>
+    			<p style="color: darkgrey; margin-left: 15px; margin-right: 15px;">"some text here"</p>
+    			<div class="badges" style="margin-left: 15px;">
+	        		<img src="../images/devnet-login-background.jpg" alt="an images here" style="margin-right: 5%">
+	        		<img src="../images/devnet-login-background.jpg" alt="an images here" style="margin-right: 5%">
+				</div>
     		</div>
     	</div>
 
     	<div class="col-md-4">
-    		<div class="card">
-    			<h1>JAVASCRIPT</h1>
-    			<p>"some text here"</p>
+    		<div class="card" style="padding-bottom: 5%">
+    			<h2>PHYTON</h2>
+    			<p style="margin-top: 3em; margin-left: 15px; margin-right: 15px;">Rank #123 from #10000</p>
+    			<p style="color: darkgrey; margin-left: 15px; margin-right: 15px;">"some text here"</p>
+    			<div class="badges" style="margin-left: 15px;">
+	        		<img src="../images/devnet-login-background.jpg" alt="an images here" style="margin-right: 5%">
+	        		<img src="../images/devnet-login-background.jpg" alt="an images here" style="margin-right: 5%">
+				</div>
     		</div>
     	</div>
+
+    <hr style="border-top: 1px solid #eee">
+
+    <!-- Collection -->
+    	<div class="col-md-12" style="margin-top: 50px">
+    		<span style="color:#91A2A8">My Collection</span>
+    	</div>
+
+    	<div class="col-md-4">
+    		<div class="card"">
+    			<h3>PHP for Beginners</h3>
+    			<div class="collection">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    			</div>
+    		</div>
+    	</div>
+
+    	<div class="col-md-4">
+    		<div class="card" style="padding-left: 0; padding-bottom: 0; padding-right: 0;">
+    			<h3>C+ for Beginners</h3>
+    			<div class="collection">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    			</div>
+    		</div>
+    	</div>
+
+    	<div class="col-md-4">
+    		<div class="card" style="padding-left: 0; padding-bottom: 0; padding-right: 0;">
+    			<h3>PHYTON for Beginners</h3>
+    			<div class="collection">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    				<img src="../images/devnet-login-background.jpg">
+    			</div>
+    		</div>
+    	</div>
+
+    	<div class="col-md-12">
+    		<span style="color:#91A2A8">Available Badges</span>
+    	</div>
+
+    	<div class="col-md-12" style="margin-top: 5%">
+    		<devnet-hexagonal></devnet-hexagonal>
+    	</div>
+
     </div>
 
   </template>
