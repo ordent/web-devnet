@@ -1,0 +1,113 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--
+A comment describing this element
+
+Example:
+
+    <my-elem></my-elem>
+
+Example:
+
+    <my-elem>
+      <h2>Hello my-elem</h2>
+    </my-elem>
+
+@demo demo/index.html
+-->
+
+<dom-module id="devnet-entry">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+		</style>
+		<template is="dom-if" if={{_isQuestion}}>
+			<div class="card">
+              <app-header class="user-info">
+                <paper-fab style="background-image: url(//images.unsplash.com/photo-1463453091185-61582044d556?dpr=1&auto=compress,format&fit=crop&w=56&h=56&q=80&cs=tinysrgb&crop=);"></paper-fab>
+                <app-toolbar>
+                  <h3><a href="/">{{author}}</a> ask about <a href="/">{{category}}</a></h3></app-toolbar>
+                <p>
+                  <small><time datetime="2017-05-15T19:00">{{date}}</time></small>
+                </p>
+              </app-header>
+              <div class="entry">
+              	<template is="dom-repeat" items={{tag}} 
+              		as=item index-as=index>
+              		<a href="/" class="tag">{{item}}</a>
+              	</template>
+                <h2><a href="/">{{title}}</a></h2>
+                <p>{{description}}</p>
+              </div>
+              <a href="/" tabindex="-1">
+                <paper-icon-button icon="favorite"></paper-icon-button> {{love}}
+              </a>
+              <a href="/" class="btn">Answer</a>
+            </div>
+		</template>
+	</template>
+	<script>
+		Polymer({
+			is: 'devnet-entry',
+			properties : {
+				date : {
+					type : String,
+					reflectToAttribute: true,
+					default : "2017 January 01"
+				},
+				author : {
+					type : String,
+					reflectToAttribute : true,
+					default : "Dimas Satrio"
+				},
+				type : {
+					type : Number,
+					reflectToAttribute : true,
+					default : 1
+				},
+				title : {
+					type : String,
+					reflectToAttribute : true,
+					default : "Sebuah Entry"
+				},
+				description : {
+					type : String,
+					reflectToAttribute : true,
+					default : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et ullam quas animi dolor, quam, minima blanditiis qui nam unde nobis esse in similique natus vero ex eos id obcaecati."
+				},
+				tag : {
+					type : Array,
+					reflectToAttribute : true,
+					default : []
+				},
+				category : {
+					type : String,
+					reflectToAttribute : true,
+					default : "Programming"
+				},
+				love : {
+					type : Number,
+					reflectToAttribute : true,
+					default : 0
+				},
+				bookmark : {
+					type : Number,
+					reflectToAttribute : true,
+					default : 0
+				},
+				_isQuestion : {
+					type : Boolean,
+					computed : '_isComputedQuestion(type)'
+				},
+				_isComputedQuestion: function(type){
+					alert(type);
+					if(type == 1){
+						return true;
+					}
+				}
+			}
+		});
+	</script>
+</dom-module>

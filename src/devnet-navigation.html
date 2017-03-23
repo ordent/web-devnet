@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="devnet-navigation">
+  <template>
+    <style include="shared-styles">
+    :host {
+        display: block;
+    }
+    </style>
+    <div class="tagbar">
+      <div class="container"> 
+        <span class="label">For you</span> 
+        <template is="dom-repeat" items="{{lists}}">
+           <a href="{{item.url}}">{{item.text}}</a> 
+        </template>
+        <a href="/">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path fill="#3f51b5" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+            <path fill="#fff" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /> </svg>
+        </a>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'devnet-navigation',
+      properties : {
+        lists : {
+          type : Array,
+          value : function(){
+            return [
+            ];
+          },
+          reflectToAttribute : true
+        }
+      },
+      setList : function(list){
+        this.list = [];
+        this.list = list;
+      }
+    });
+  </script>
+</dom-module>

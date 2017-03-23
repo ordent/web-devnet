@@ -19,6 +19,10 @@
 <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
 <link rel="import" href="my-icons.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="devnet-sidebar.html">
+<link rel="import" href="devnet-entry.html">
+<link rel="import" href="devnet-header.html">
+
 <dom-module id="devnet-main">
   <template>
     <style include="iron-flex iron-flex-alignment"></style>
@@ -28,41 +32,12 @@
     <app-drawer-layout fullbleed force-narrow>
       <!-- Drawer content -->
       <app-drawer id="drawer">
-        <app-header class="user-info" style="background-image: url(//images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=1&auto=compress,format&fit=crop&w=767&h=512&q=80&cs=tinysrgb&crop=);">
-          <paper-fab style="background-image: url(//images.unsplash.com/photo-1463453091185-61582044d556?dpr=1&auto=compress,format&fit=crop&w=56&h=56&q=80&cs=tinysrgb&crop=);"></paper-fab>
-          <app-toolbar>
-            <h3>Jonathan Aresia</h3></app-toolbar>
-        </app-header>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="main" href="/">Beranda</a>
-          <paper-collapse-item header="For you">
-            <a href="/">Editor's Pick</a> <a href="/">Google Developer ID</a> <a href="/">Frontend Future 2017</a> <a href="/">NodeJS</a> <a href="/">React Native</a>
-          </paper-collapse-item>
-          <a name="event" href="/event">Events</a>
-          <a name="profile" href="/profile">Setting</a>
-          <a name="logout" href="/logout">Logout</a>
-        </iron-selector>
+        <devnet-sidebar></devnet-sidebar>
       </app-drawer>
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
         <app-header condenses reveals effects="waterfall">
-          <div class="navbar">
-            <div class="container">
-              <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-              <a href="/" class="brand"><img src="../images/devnet-logo.png" alt="S{}LVE.ID"></a> <a href="/profile" class="btn">Sign in / Sign up</a>
-              <form class="navbar-search" action="">
-                <input type="text"> </form>
-            </div>
-          </div>
-          <div class="tagbar">
-            <div class="container"> <span class="label">For you</span> <a href="/">Editor's Pick</a> <a href="/">Google Developer ID</a> <a href="/">Frontend Future 2017</a> <a href="/">NodeJS</a> <a href="/">React Native</a>
-              <a href="/">
-                <svg class="icon" viewBox="0 0 24 24">
-                  <path fill="#3f51b5" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-                  <path fill="#fff" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /> </svg>
-              </a>
-            </div>
-          </div>
+          <devnet-header navigation-list={{navigationList}}></devnet-header>
         </app-header>
         <div class="container stream">
           <div class="content">
@@ -79,6 +54,7 @@
                 <paper-icon-button icon="send"></paper-icon-button>
               </a>
             </div>
+            <devnet-entry></devnet-entry> 
             <div class="card">
               <app-header class="user-info">
                 <paper-fab style="background-image: url(//images.unsplash.com/photo-1463453091185-61582044d556?dpr=1&auto=compress,format&fit=crop&w=56&h=56&q=80&cs=tinysrgb&crop=);"></paper-fab>
@@ -139,16 +115,7 @@
                 <paper-icon-button icon="bookmark"></paper-icon-button> 71</a>
             </div>
           </div>
-          <div class="sidebar">
-            <div class="card card-event has-thumbnail" style="background-image: url(//images.unsplash.com/photo-1461950209984-1ce1f03a1be9?dpr=1&auto=compress,format&fit=crop&w=376&h=376&q=80&cs=tinysrgb&crop=);">
-              <small>Upcoming Events</small>
-              <h1>The Next Big Thing in Indonesia</h1>
-              <p>
-                <small><time class="btn" datetime="2017-05-15T19:00">15 Mei 2017</time></small>
-              </p>
-              <a href="/" class="btn">View Events</a>
-            </div>
-          </div>
+          <devnet-sidebar></devnet-sidebar>
         </div>
         <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="404" role="main">
           <devnet-profile name="profile"></devnet-profile>
@@ -167,6 +134,33 @@ Polymer({
       reflectToAttribute: true,
       observer: '_pageChanged',
     },
+    navigationList : {
+      type : Array,
+      value : [
+          {
+                url : "/featured/editorials_pick",
+                text : "Editor's Pick"
+              },
+              {
+                url : "/featured/google_developer_id",
+                text : "Google Developer ID"
+              },
+              {
+                url : "/featured/frontend_future_2017",
+                text : "Frontend Future 2017"
+              },
+              {
+                url : "/featured/nodejs",
+                text : "NodeJS"
+              },
+              {
+                url : "/featured/react_native",
+                text : "React Native"
+              }
+        ]
+    }
+  },
+  ready : function(){
   },
 
   observers: [
