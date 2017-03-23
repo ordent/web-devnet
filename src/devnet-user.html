@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../src/devnet-hexagonal-badges.html">
+<link rel="import" href="../src/devnet-bio.html">
+<link rel="import" href="../src/devnet-skills.html">
+<link rel="import" href="../src/devnet-collection.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="devnet-user">
+  <template>
+  	<style include="shared-styles">
+    :host {
+        display: block;
+    }
+
+    </style>
+
+    <!-- user-profile -->
+    <devnet-bio></devnet-bio>
+    
+    <div class="container">
+    	<devnet-skills></devnet-skills>
+
+    	<hr style="border-top: 1px solid #eee">
+
+    	<devnet-collection></devnet-collection>
+
+    	<hr style="border-top: 1px solid #eee">
+
+   		<devnet-hexagonal></devnet-hexagonal>
+
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'devnet-user',
+    });
+  </script>
+</dom-module>
