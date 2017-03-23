@@ -4,7 +4,8 @@
   "fragments": [
     "src/devnet-login.html",
     "src/devnet-main.html",
-    "src/devnet-profile.html"
+    "src/devnet-profile.html",
+    "src/devnet-user.html"
   ],
   "sourceGlobs": [
     "src/**/*",
