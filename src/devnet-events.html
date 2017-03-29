@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="devnet-events">
+  <template>
+  	<style include="shared-styles">
+
+	.card .events h5 {
+		background: blue; color: white; width: 50%; text-align: center; padding: 2%;
+	}
+
+	.card .events button {
+		background: blue; color: white; width: 100%; margin-top: 25%; text-align: center; padding: 5%;
+	}
+
+  	</style>
+
+  	<div class="card" style="padding: 2%">
+		<div class="events">
+			<p>Upcoming Events</p>
+			<h2>INDONESIA ANDROID KEJAR 2017</h2>
+			<h5>28 Februari 2017</h5>
+			<button>VIEW EVENTS</button>
+		</div>
+	</div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'devnet-events',
+    });
+  </script>
+</dom-module>
