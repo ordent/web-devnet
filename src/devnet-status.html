@@ -1,0 +1,43 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="devnet-status">
+  <template>
+    <style include="shared-styles">
+       :host {
+        display: block;
+      }
+      
+      .card {
+        overflow: hidden;
+        background: #fff;
+        border-radius: .4em;
+        margin: 1em 0;
+        padding: 1em;
+      }
+    </style>
+    <div class="card">
+      <div class="status">
+        <paper-tabs selected="0">
+          <paper-tab>Post</paper-tab>
+          <paper-tab>Photos</paper-tab>
+          <paper-tab>Ask</paper-tab>
+        </paper-tabs>
+        <iron-autogrow-textarea placeholder="What do you think?"></iron-autogrow-textarea>
+      </div>
+      <a href="/" class="btn btn-send">
+        <paper-icon-button icon="send"></paper-icon-button>
+      </a>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'devnet-status',
+      properties: {
+
+      },
+      ready: function () {
+
+      }
+    });
+
+  </script>
+</dom-module>

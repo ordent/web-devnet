@@ -1,4 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classess.html">
+
 <link rel="import" href="devnet-navigation.html">
 
 
@@ -24,15 +26,34 @@ Example:
        :host {
         display: block;
       }
-      
+      .brand img{
+        height: 25px;
+      }
       .navbar {
         background: #3f51b5;
         min-height: 5.2em;
       }
+
       
       .navbar .btn {
         /*display: none;*/
         float: right;
+      }
+      
+      .btn {
+        background: #7cc576;
+        border-radius: .2em;
+        color: #fff;
+        display: inline-block;
+        margin: .5em 1em;
+        padding: 1em 1em;
+        vertical-align: top;
+        font-family: Roboto;
+        text-decoration: none;
+      }
+      
+      .btn-send {
+        padding: .2em 1.5em;
       }
       
       .navbar paper-icon-button {
@@ -44,8 +65,7 @@ Example:
       }
       
       .navbar-search {
-        
-        
+        margin: 0 40px;
       }
       
       .navbar-search input[type=text] {
@@ -54,17 +74,28 @@ Example:
         box-shadow: 0 .2em .2em rgba(0, 0, 0, 0.35);
         padding: .6em;
         min-height: 1em;
-        width: 100%;
+        width: 80%;
+        height: 30px;
         outline: none;
       }
+      
+      .navbar{
+        width: 80%;
+        margin: 0 auto;
+        @apply --layout-horizontal;
+        @apply --layout-center;
+      }
+     
     </style>
     <div class="navbar">
-      <div class="container">
-        <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-        <a href="/" class="brand"><img src="../images/devnet-logo.png" alt="S{}LVE.ID"></a> <a href="/profile" class="btn">Sign in / Sign up</a>
-        <form class="navbar-search" action="">
-          <input type="text"> </form>
-      </div>
+        <!--<paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>-->
+        <a href="/" class="brand">
+          <img src="../images/devnet-logo.png" alt="S{}LVE.ID">
+        </a>
+        <form class="navbar-search flex-2" action="">
+          <input type="text">
+        </form>
+        <a href="/profile" class="btn">Sign in / Sign up</a>
     </div>
     <devnet-navigation lists=[[navigationList]]></devnet-navigation>
   </template>

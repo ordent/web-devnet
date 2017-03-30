@@ -5,6 +5,40 @@
     :host {
         display: block;
     }
+    
+
+      .tagbar {
+        background: #fff;
+        line-height: 2;
+      }
+      .tagbar .container{
+        width: 80%;
+        margin: 0 auto;
+      }
+      
+      .tagbar .label {
+        color:gray;
+      }
+      
+      .tagbar a {
+        display: inline-block;
+        padding: 1em;
+        text-decoration: none;
+      }
+      
+      .tagbar a:first-child {
+        padding-left: 4em;
+      }
+      
+      .tagbar a:last-child {
+        padding: 0 1em 0 0;
+      }
+
+    .icon {
+      height: 2rem;
+      width: 2rem;
+      vertical-align: middle;
+    }
     </style>
     <div class="tagbar">
       <div class="container"> 
@@ -12,8 +46,8 @@
         <template is="dom-repeat" items="{{lists}}">
            <a href="{{item.url}}">{{item.text}}</a> 
         </template>
-        <a href="/">
-          <svg class="icon" viewBox="0 0 24 24">
+        <a href="/" class="icon">
+          <svg viewBox="0 0 24 24">
             <path fill="#3f51b5" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
             <path fill="#fff" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /> </svg>
         </a>
