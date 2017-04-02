@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classess.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="devnet-navigation.html">
 
@@ -26,18 +27,20 @@ Example:
        :host {
         display: block;
       }
+      .navbar a{
+        display: block;
+      }
       .brand img{
         height: 25px;
       }
       .navbar {
-        background: #3f51b5;
-        min-height: 5.2em;
+        width : 80%;
       }
 
       
       .navbar .btn {
         /*display: none;*/
-        float: right;
+        /*float: right;*/
       }
       
       .btn {
@@ -45,15 +48,21 @@ Example:
         border-radius: .2em;
         color: #fff;
         display: inline-block;
-        margin: .5em 1em;
-        padding: 1em 1em;
-        vertical-align: top;
+        vertical-align: middle;
         font-family: Roboto;
         text-decoration: none;
+        position: relative;
+      }
+      .btn span{
+
+      }
+
+      paper-button{
+        background : #7cc576;
+        color: #fff;
       }
       
       .btn-send {
-        padding: .2em 1.5em;
       }
       
       .navbar paper-icon-button {
@@ -65,7 +74,7 @@ Example:
       }
       
       .navbar-search {
-        margin: 0 40px;
+        @apply(--layout-flex-2);
       }
       
       .navbar-search input[type=text] {
@@ -73,17 +82,16 @@ Example:
         border-radius: .2em;
         box-shadow: 0 .2em .2em rgba(0, 0, 0, 0.35);
         padding: .6em;
-        min-height: 1em;
-        width: 80%;
-        height: 30px;
+        margin: 0 auto;
+        min-height: 2em;
         outline: none;
+        display: block;
+        width: 80%;
       }
       
       .navbar{
-        width: 80%;
         margin: 0 auto;
-        @apply --layout-horizontal;
-        @apply --layout-center;
+        @apply(--layout-horizontal);
       }
      
     </style>
@@ -92,12 +100,11 @@ Example:
         <a href="/" class="brand">
           <img src="../images/devnet-logo.png" alt="S{}LVE.ID">
         </a>
-        <form class="navbar-search flex-2" action="">
+        <form class="navbar-search" action="">
           <input type="text">
         </form>
-        <a href="/profile" class="btn">Sign in / Sign up</a>
+        <paper-button raised class="green">Sign In / Sign up</paper-button>
     </div>
-    <devnet-navigation lists=[[navigationList]]></devnet-navigation>
   </template>
   <script>
     Polymer({

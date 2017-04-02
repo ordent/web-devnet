@@ -1,12 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
+<!--<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">-->
+<!--<link rel="import" href="../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">-->
+<!--<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">-->
+<!--<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">-->
+<!--<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">-->
+<!--<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">-->
+<!--<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">-->
+<!--<link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
@@ -21,20 +21,13 @@
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="devnet-sidebar.html">
 <link rel="import" href="devnet-entry.html">
-<link rel="import" href="devnet-status.html">
+<link rel="import" href="devnet-status.html">-->
 
 <dom-module id="devnet-main">
   <template>
-    <style include="shared-styles">
+    <style>
       :host{
         display: block;
-      }
-      .container{
-        @apply --layout-horizontal;
-        max-width: 80%;
-      }
-      .content{
-        @apply : --layout-flex-2;
       }
     </style>
     
@@ -45,10 +38,10 @@
             <!--Section Entry -->
             <devnet-entry></devnet-entry>
             <!-- Section News-->
-            
+            test
           </div>
           
-          <devnet-sidebar navigation-list={{navigationList}}></devnet-sidebar>
+          <!--<devnet-sidebar navigation-list={{navigationList}}></devnet-sidebar>-->
           
         </div>
       
