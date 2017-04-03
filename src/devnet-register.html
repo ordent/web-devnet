@@ -8,11 +8,16 @@
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-register">
-  <template>
+    <template>
   	<style include="shared-styles">
-
         :host {
             display: block;
+        }
+
+        .container{
+            margin: 0 auto;
+            width: 1200px;
+            background: white;
         }
 
         .contentleft {
@@ -38,7 +43,7 @@
 
   	</style>
 
-    <div class="card">
+    <div class="container">
         <h3> Fill in the details to sign up: </h3>
         <form is="iron-form" id="form" method="post" action="/form/handler">
         <div class="contentleft">
@@ -70,9 +75,9 @@
 
   </template>
 
-  <script>
-    Polymer({
-      is: 'devnet-register',
-    });
-  </script>
+    <script>
+        Polymer({
+            is: 'devnet-register',
+        });
+    </script>
 </dom-module>
