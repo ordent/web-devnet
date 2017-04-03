@@ -7,27 +7,26 @@
 <link rel="import" href="devnet-entry.html">
 
 <dom-module id="devnet-main">
-  <style include="iron-flex iron-flex-factors">
-     :host {
-      display: block;
-      /*min-height: 800px;*/
-    }
-    
-    .wrapper {
-      margin: 0 auto;
-      margin: 40px 100px 0 100px;
-    }
-    
-    .left {
-
-    }
-    
-    .child{
-      padding : 0 40px;
-    }
-    .right {}
-  </style>
-  <template>
+    <style include="iron-flex iron-flex-factors">
+         :host {
+            display: block;
+            /*min-height: 800px;*/
+        }
+        
+        .wrapper {
+            margin: 0 auto;
+            margin: 40px 100px 40px 100px;
+        }
+        
+        .left {}
+        
+        .child {
+            padding: 0 40px;
+        }
+        
+        .right {}
+    </style>
+    <template>
     <div class="wrapper layout horizontal">
       <div class="content left child flex-2">
         <!--<devnet-article></devnet-article>-->
@@ -38,11 +37,10 @@
       </div>
     </div>
   </template>
-  <script>
-    Polymer({
-      is: 'devnet-main',
-      properties: {
-      }
-    });
-  </script>
+    <script>
+        Polymer({
+            is: 'devnet-main',
+            properties: {}
+        });
+    </script>
 </dom-module>

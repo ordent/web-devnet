@@ -3,7 +3,7 @@
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-navigation">
-  <template>
+    <template>
     <style include="shared-styles iron-flex iron-flex-factors">
     :host {
         display: block;
@@ -13,7 +13,6 @@
       .tagbar {
         background: #fff;
         line-height: 2;
-        padding: 20px 0;
       }
       .tagbar .container{
         width: 80%;
@@ -22,6 +21,7 @@
       
       .tagbar .label {
         color:gray;
+        padding: 1em;
       }
       
       .tagbar a {
@@ -35,7 +35,8 @@
       }
       
       .tagbar a:last-child {
-        padding: 0 1em 0 0;
+        padding: 1em;
+
       }
 
     .icon {
@@ -51,31 +52,30 @@
         <template is="dom-repeat" items="{{lists}}">
            <a href="{{item.url}}">{{item.text}}</a> 
         </template>
-        <a href="/" class="icon">
-          <svg viewBox="0 0 24 24">
+    <a href="/" class="icon">
+        <svg viewBox="0 0 24 24">
             <path fill="#3f51b5" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
             <path fill="#fff" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /> </svg>
-        </a>
-      </div>
+    </a>
     </div>
-  </template>
-  <script>
-    Polymer({
-      is: 'devnet-navigation',
-      properties : {
-        lists : {
-          type : Array,
-          value : function(){
-            return [
-            ];
-          },
-          reflectToAttribute : true
-        }
-      },
-      setList : function(list){
-        this.list = [];
-        this.list = list;
-      }
-    });
-  </script>
+    </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'devnet-navigation',
+            properties: {
+                lists: {
+                    type: Array,
+                    value: function() {
+                        return [];
+                    },
+                    reflectToAttribute: true
+                }
+            },
+            setList: function(list) {
+                this.list = [];
+                this.list = list;
+            }
+        });
+    </script>
 </dom-module>
