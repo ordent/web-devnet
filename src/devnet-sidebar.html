@@ -1,8 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="devnet-events.html">
+<link rel="import" href="devnet-side-entry.html">
+
 
 <dom-module id="devnet-sidebar">
-  <template>
+    <template>
     <style>
        :host {
         display: block;
@@ -65,24 +67,24 @@
     </style>
     <devnet-events></devnet-events>
     <h4>Top Reading this Week</h4>
-
-
+    <devnet-side-entry></devnet-side-entry>
+    <devnet-side-entry></devnet-side-entry>
+    
   </template>
 
-  <script>
-    Polymer({
-      is: 'devnet-sidebar',
-      properties: {
-        navigationList: {
-          type: Array,
-          value: function () {
-            return []
-          },
-          reflectToAttribute: true
-        }
-      },
-      ready: function () {
-      }
-    });
-  </script>
+    <script>
+        Polymer({
+            is: 'devnet-sidebar',
+            properties: {
+                navigationList: {
+                    type: Array,
+                    value: function() {
+                        return []
+                    },
+                    reflectToAttribute: true
+                }
+            },
+            ready: function() {}
+        });
+    </script>
 </dom-module>

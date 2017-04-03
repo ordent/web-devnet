@@ -1,0 +1,84 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="my-icons.html">
+
+<dom-module id="devnet-side-entry">
+    <style is="custom-style" include="iron-flex">
+         :host {
+            display: block;
+            margin-top: 20px;
+        }
+        
+        .side-entry-avatar img {
+            width: 100px;
+        }
+        
+        .side-entry-content h5 {
+            margin: 0;
+        }
+        
+        .side-entry-content p {
+            margin: 0;
+            color: gray;
+            font-size: 0.8em;
+        }
+        
+        .side-entry-content p .author {
+            font-weight: 800;
+        }
+        
+        .side-entry-content .meta {
+            margin-top: 10px;
+        }
+        
+        .column {
+            width: 30px;
+        }
+        
+        .column-hearts iron-icon {
+            color: deeppink;
+        }
+        
+        .column-two-dots iron-icon {
+            color: seagreen;
+        }
+        
+        .column-comments iron-icon {
+            color: dimgray;
+        }
+    </style>
+    <template>
+      <div class="side-entry-wrapper layout horizontal">
+        <div class="side-entry-avatar">
+          <img src="../images/devnet-octocat.png" alt="">
+        </div>
+        <div class="side-entry-content">
+          <h5>How to Bootstrap a New Advisor Practice</h5>
+          <p><span class="author">Jonathan</span> - It can be hard for a new</p>
+          <div class="meta layout horizontal">
+            <div class="column column-hearts">
+              <iron-icon icon="my-icons2:hearts"></iron-icon>
+            </div>
+            <div class="column column-hearts-text">
+              13
+            </div>
+            <div class="column column-comments">
+              <iron-icon icon="my-icons2:comments"></iron-icon>
+            </div>
+            <div class="column column-comments-text">
+              13
+            </div>
+            <div class="column column-two-dots">
+              <iron-icon icon="my-icons2:two-dots"></iron-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+	  </template>
+    <script>
+        Polymer({
+            is: 'devnet-side-entry',
+            properties: {}
+        });
+    </script>
+</dom-module>
