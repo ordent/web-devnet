@@ -2,9 +2,10 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.html",
   "fragments": [
-    "src/devnet-login.html",
-    "src/devnet-main.html",
-    "src/devnet-profile.html"
+    "src/my-view1.html",
+    "src/my-view2.html",
+    "src/my-view3.html",
+    "src/my-view404.html"
   ],
   "sourceGlobs": [
     "src/**/*",
@@ -13,6 +14,6 @@
   ],
   "includeDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents.min.js"
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ]
 }

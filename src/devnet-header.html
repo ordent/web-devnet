@@ -1,27 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classess.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="devnet-navigation.html">
+<link rel="import" href="shared-styles.html">
 
-
-<!--
-A comment describing this element
-
-Example:
-
-    <my-elem></my-elem>
-
-Example:
-
-    <my-elem>
-      <h2>Hello my-elem</h2>
-    </my-elem>
-
-@demo demo/index.html
--->
-
-<dom-module id="devnet-header">
+<dom-module id="devnet-header" >
   <template>
     <style include="shared-styles">
        :host {
@@ -36,30 +20,13 @@ Example:
       .navbar {
         width : 80%;
       }
-
-      
-      .navbar .btn {
-        /*display: none;*/
-        /*float: right;*/
-      }
-      
-      .btn {
-        background: #7cc576;
-        border-radius: .2em;
-        color: #fff;
-        display: inline-block;
-        vertical-align: middle;
-        font-family: Roboto;
-        text-decoration: none;
-        position: relative;
-      }
-      .btn span{
-
-      }
+  
 
       paper-button{
-        background : #7cc576;
+        background : var(--secondary-color);
         color: #fff;
+        font-size:0.8em;
+        padding:10px;
       }
       
       .btn-send {

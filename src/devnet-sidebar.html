@@ -1,85 +1,71 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="devnet-events.html">
+
 <dom-module id="devnet-sidebar">
   <template>
-    <style include="shared-styles">
+    <style>
        :host {
         display: block;
       }
       
-      app-header, iron-selector {
+      app-header,
+      iron-selector {
         overflow: hidden;
       }
-      iron-selector{
+      
+      iron-selector {
         background: #FFF;
       }
-      .navigation-wrapper{
-        background:#FFF;
+      
+      .navigation-wrapper {
+        background: #FFF;
       }
-
-.card .user-info {
-  color: #898da3;
-}
-
-.card .user-info paper-fab {
-  margin: 0 1em 1em 0;
-}
-
-.card .user-info h3 {
-  color: #898da3;
-  padding: .5em 0 .2em;
-}
-
-.card .user-info p {
-  margin: 0;
-}
-
-.card .user-info a {
-  color: #3f51b5;
-}
-
-
-
-.user-info {
-  -webkit-background-size: cover;
-  background-size: cover;
-}
-
-.user-info h3 {
-  color: #fff;
-  font-weight: normal;
-  margin: 0;
-  padding: 4em 1em 1em;
-}
-
-.user-info paper-fab {
-  background-position: center center;
-  -webkit-background-size: cover;
-  background-size: cover;
-  float: left;
-  margin: 5em 1em 0;
-  overflow: hidden;
-}
+      
+      .card .user-info {
+        color: #898da3;
+      }
+      
+      .card .user-info paper-fab {
+        margin: 0 1em 1em 0;
+      }
+      
+      .card .user-info h3 {
+        color: #898da3;
+        padding: .5em 0 .2em;
+      }
+      
+      .card .user-info p {
+        margin: 0;
+      }
+      
+      .card .user-info a {
+        color: #3f51b5;
+      }
+      
+      .user-info {
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+      
+      .user-info h3 {
+        color: #fff;
+        font-weight: normal;
+        margin: 0;
+        padding: 4em 1em 1em;
+      }
+      
+      .user-info paper-fab {
+        background-position: center center;
+        -webkit-background-size: cover;
+        background-size: cover;
+        float: left;
+        margin: 5em 1em 0;
+        overflow: hidden;
+      }
     </style>
-    <app-header class="user-info" style="background-image: url(//images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=1&auto=compress,format&fit=crop&w=767&h=512&q=80&cs=tinysrgb&crop=);">
-      <paper-fab style="background-image: url(//images.unsplash.com/photo-1463453091185-61582044d556?dpr=1&auto=compress,format&fit=crop&w=56&h=56&q=80&cs=tinysrgb&crop=);"></paper-fab>
-      <app-toolbar>
-        <h3>Jonathan Aresia</h3>
-      </app-toolbar>
-    </app-header>
-    <div class="navigation-wrapper">
-      <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-      <a name="main" href="/">Beranda</a>
-      <paper-collapse-item header="For you">
-        <template is="dom-repeat" items={{navigationList}} as=item>
-          <a href="{{item.url}}">{{item.text}}</a>
-        </template>
+    <devnet-events></devnet-events>
+    <h4>Top Reading this Week</h4>
 
-      </paper-collapse-item>
-      <a name="event" href="/event">Events</a>
-      <a name="profile" href="/profile">Setting</a>
-      <a name="logout" href="/logout">Logout</a>
-    </iron-selector>
-    </div>
 
   </template>
 

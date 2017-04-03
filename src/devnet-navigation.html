@@ -1,7 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="shared-styles.html">
+
 <dom-module id="devnet-navigation">
   <template>
-    <style include="shared-styles">
+    <style include="shared-styles iron-flex iron-flex-factors">
     :host {
         display: block;
     }
@@ -10,6 +13,7 @@
       .tagbar {
         background: #fff;
         line-height: 2;
+        padding: 20px 0;
       }
       .tagbar .container{
         width: 80%;
@@ -38,10 +42,11 @@
       height: 2rem;
       width: 2rem;
       vertical-align: middle;
+      margin-left: auto;
     }
     </style>
     <div class="tagbar">
-      <div class="container"> 
+      <div class="container layout horizontal"> 
         <span class="label">For you</span> 
         <template is="dom-repeat" items="{{lists}}">
            <a href="{{item.url}}">{{item.text}}</a> 
