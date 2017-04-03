@@ -3,10 +3,8 @@
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="../src/devnet-question.html">
-
 <link rel="import" href="my-icons.html">
-<dom-module id="devnet-entry">
+<dom-module id="devnet-question">
 	<template>
 		<style is="custom-style" include="iron-flex iron-flex-factors">
 			:host {
@@ -186,7 +184,7 @@
 					<a href="/user"><img src="../images/devnet-octocat.png" style="width: 50px; height: 50px; float: left; border-radius: 50%;"></a>
 				</div>
 				<div class="entry-main">
-					<span name="name" style="width: 100%;"><a href="/user" style="color: blue">Justin</a> recommend this entry</span>
+					<span name="name" style="width: 100%;"><a href="/user" style="color: blue">Justin</a> ask about <a href="#"> CSS </a></span>
 					<p style="color: #898da3">13 Minutes Ago</p>
 				</div>
 				<div class="entry-options">
@@ -194,17 +192,13 @@
 				</div>
 			</div>
 
-			<img src="../images/devnet-login-background.jpg" style="width: 100%; height: 100%;">
 			<div class="entry-content">
 				<a href="" class="title">
 					<h3>
-						Building For Mobile: RWD, PWA, AMP Or Instant entrys?
+						Centering things
 					</h3>
 				</a>
-				<p>As we look deep into 2017, one of the questions on every web developer’s mind ought to be, “What trend will define the
-					web in 2017?” Just three years ago, we were talking about the “Year of Responsive Web Design”, and we’ve all seen how
-					the stakes were raised when Google announced Mobilegeddon (21 April 2015) and started to boost the rankings of mobile-friendly
-					websites in mobile search results.
+				<p>How to make a centered vertically and horizontally a block-type elements ?
 				</p>
 			</div>
 			<div class="clearfix">
@@ -223,9 +217,6 @@
 				<!--<a href="#" style="float:left;"><img src="https://meta.stackexchange.com/content/Sites/stackexchangemeta/img/apple-touch-icon@2.png?v=c34d758b103d">					13</a>
 				<a href="#" style="float:right; margin-right: 0;"><img src="../images/share1.png" style="width: 18px"> 13</a>-->
 			</div>
-
-			<devnet-question></devnet-question>
-
 
 
 
@@ -274,7 +265,7 @@
 
 	<script>
 		Polymer({
-			is: 'devnet-entry',
+			is: 'devnet-question',
 		});
 	</script>
 </dom-module>
