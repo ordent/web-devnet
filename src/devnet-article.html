@@ -1,190 +1,230 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-
-<link rel="import" href="shared-styles.html">
-
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="my-icons.html">
 <dom-module id="devnet-article">
-  <template>
-  	<style include="shared-styles">
-
-
-	    span {
-	    	float: left;
-	    	margin: 0;
-	    }
-
-	    .name span {
-	    	color: blue;
-	    }
-
-	    .left,
-	    .middle,
-	    .right {
-	        align-items: center;
-	    	display: inline-block;
-	        vertical-align: top;
-	    }
-
-	    .left {
-	    	width: 15%;
-	    	margin: 5% 0 0 2.5%;
-	    }
-
-	    .middle {
-	    	width: 70%;
-	    	margin: 5% 0 0 0%;
-	    }
-
-	    .right {
-	    	width: 5%;
-	    	position: relative;
-	    	bottom: 2em;
-	    	margin-top: 5%;
-	    }
-
-	    .reaction {
-	    	margin: 2% 5% 2% 5%;
-	    }
-
-	    .reaction a {
-	    	margin-right: 5%;
-	    	position: relative;
-	    	color: black;
-	    }
-
-	    .reaction img {
-	    	width: 20px;
-	    }
-
-	    .clearfix {
-			clear: both;
-		}
-
-		.article {
-			margin: 3%;
-			font-size: 14px;
-
-			text-align: justify;
-			line-height: 1.5em;
-		}
-
-		.divcomments {
-			margin: 0 0 5% 0;
-			padding: 0 5% 5% 5%;
-			background: #F9F9F9;
-		}
-
-		.comments {
-			margin: 5% 0;
-		}
-
-		.comments p {
-			margin: 5px 0;
-		}
-
-		.comments a {
-			color: blue;
-			font-weight: bold;
-		}
-
-		.comments img,
-    	.addcomments img,
-    	.addcomments input {
-    		float: left;
-    	}
-
-    	.comments img,
-    	.addcomments img {
-    		width: 50px;
-    		margin-right;
-    	}
-
-    	.addcomments input {
-    		padding: 2%;
-    		width: 80%;
-    	}
-
-	    .card {
-	    	padding: 0;
-	    }
-
-  	</style>
-
-  	<div class="card">
-		<div class="left">
-			<img src="../images/devnet-octocat.png" style="width: 50px; height: 50px; float: left; border-radius: 50%;">
-		</div>
+	<template>
+		<style is="custom-style" include="iron-flex iron-flex-factors">
+			:host {
+				background: #FFF;
+				display: block;
+				border-radius:10px;
+			}
 			
-		<div class="middle">
-			<span name="name" style="width: 100%;"><a href="#" style="color: blue">Justin</a> recommend this Article</span>
-			<p style="color: #898da3">13 Minutes Ago</p>
-		</div>
+			span {
+				float: left;
+				margin: 0;
+			}
+			
+			.name span {
+				color: blue;
+			}
+			
+			.left,
+			.middle,
+			.right {
+				align-items: center;
+				display: inline-block;
+				vertical-align: top;
+			}
+			
+			.left {
+				width: 15%;
+				margin: 5% 0 0 2.5%;
+			}
+			
+			.middle {
+				width: 70%;
+				margin: 5% 0 0 0%;
+			}
+			
+			.right {
+				width: 5%;
+				position: relative;
+				bottom: 2em;
+				margin-top: 5%;
+			}
+			
+			.reaction {
+				margin: 2% 5% 2% 5%;
+			}
+			
+			.reaction a {
+				margin-right: 5%;
+				position: relative;
+				color: black;
+			}
+			
+			.reaction img {
+				width: 20px;
+			}
+			
+			.clearfix {
+				clear: both;
+			}
+			
+			.article {
+				margin: 3%;
+				font-size: 14px;
+				text-align: justify;
+				line-height: 1.5em;
+			}
+			
+			.divcomments {
+				margin: 0 0 5% 0;
+				padding: 0 5% 5% 5%;
+				background: #F9F9F9;
+			}
+			
+			.comments {
+				margin: 5% 0;
+			}
+			
+			.comments p {
+				margin: 5px 0;
+			}
+			
+			.comments a {
+				color: blue;
+				font-weight: bold;
+			}
+			
+			.comments img,
+			.addcomments img,
+			.addcomments input {
+				float: left;
+			}
+			
+			.comments img,
+			.addcomments img {
+				width: 50px;
+				margin-right;
+			}
+			
+			.addcomments input {
+				padding: 2%;
+				width: 80%;
+			}
+			
+			.card {
+				padding: 0;
+			}
+			.header{
+				padding: 20px;
+			}
+			.article-avatar{
+				width: 10%;
+			}
+			.article-avatar img{
+				border-radius:50%;
+			}
+			.article-main{
+				width: 85%;
+				color: lightgrey;
+			}
+			.article-main a{
+				text-decoration: none;
+				font-size: 1.4em;
+			}
+			.article-main p{
+				font-size:0.8em;
+			}
+			.article-options{
+				widows: 5%;
+			}
+			.article-content{
+				padding:20px;
+			}
+			.article-content .title{
+				text-decoration: none;
+			}
+			.article-content p{
+				color:gray;
+			}
+		</style>
 
-		<div class="right">
-		<a href="#" style="font-size: 50px; color: red; text-decoration: none;"> ... </a>
-		</div>
-
-		<img src="../images/devnet-login-background.jpg" style="width: 100%; height: 100%;">
-
-		<div class="reaction">
-			<a href="#" style="float:left;"><img src="../images/picture1.png"> 13</a>
-			<a href="#" style="float:left;"><img src="https://meta.stackexchange.com/content/Sites/stackexchangemeta/img/apple-touch-icon@2.png?v=c34d758b103d"> 13</a>
-			<a href="#" style="float:right; margin-right: 0;"><img src="../images/share1.png" style="width: 18px"> 13</a>
-		</div>
-
-		<div class="clearfix">
-		</div>
-
-		<div class="article">
-			<p style="color: #898da3">Polymer is a lightweight library that helps you take full advantage of Web Components.<br/>
-			With Web Components, you can create reusable custom elements that interoperate seamlessly with the browser’s built-in elements, or break your app up into right-sized components, making your code cleaner and less expensive to maintain.<br/>
-			Polymer sprinkles a bit of sugar over the standard Web Components APIs, making it easier for you to get great results.
-			</p>
-		</div>
-
-		<div class="divcomments">
-			<div style="float: left">
-				<p style="font-weight: bold">1 Comment</p>
-			</div>
-
-			<div>
-				<button style="float: right; position: relative; top: 0.75em">Oldest&#9660</button>
-				<p style="float: right; margin-right: 1%">Sort By </p>
-			</div>
-
-			<div class="clearfix">
-				<hr style="border-top: solid #eeeeee 1px; margin: 5% 0;">
-			</div>
-
-			<div class="addcomments">
-				<img src=../images/devnet-octocat.png style="width: 50px; float: left; margin-right: 5%; border-radius: 50%;">
-				<input type="text" name="wordframe" placeholder="Add a comments..." style="float: left; padding: 2%;">
-			</div>
-
-			<div class="clearfix">
-			</div>
-
-			<div class="comments">
-				<img src=../images/devnet-octocat.png style="width: 50px; float: left; margin-right: 5%; border-radius: 50%;">
-				<div style="float:left">
-				<p style="color: #898da3"><a href="#">Dadang Kurniawan</a> - Developer at e-product</p>
-				<p> menarik sekali, +1 untuk postingan ini.</p>
-				<p style="color: #898da3"><a href="#" style="font-weight: normal">Like</a> - <a href="#" style="font-weight: normal">Reply</a> - Nov 11, 2016 10:50am</p>
+		<div class="card">
+			<div class="header layout horizontal">
+				<div class="article-avatar">
+					<img src="../images/devnet-octocat.png" style="width: 50px; height: 50px; float: left; border-radius: 50%;">					
 				</div>
-				
+				<div class="article-main">
+					<span name="name" style="width: 100%;"><a href="#" style="color: blue">Justin</a> recommend this Article</span>
+					<p style="color: #898da3">13 Minutes Ago</p>
+				</div>
+				<div class="article-options">
+					<paper-icon-button icon="my-icons2:two-dots"></paper-icon-button>					
+				</div>
 			</div>
+	
+			<img src="../images/devnet-login-background.jpg" style="width: 100%; height: 100%;">
+			<div class="article-content">
+				<a href="" class="title">
+					<h3>
+						Building For Mobile: RWD, PWA, AMP Or Instant Articles?
+					</h3>
+				</a>
+				<p>As we look deep into 2017, one of the questions on every web developer’s mind ought to be, “What trend will define the web in 2017?” Just three years ago, we were talking about the “Year of Responsive Web Design”, and we’ve all seen how the stakes were raised when Google announced Mobilegeddon (21 April 2015) and started to boost the rankings of mobile-friendly websites in mobile search results.
+				</p>
+			</div>
+			<div class="clearfix">
+			</div>
+			<div class="article-reaction">
+				<a href="#" style="float:left;"><img src="../images/picture1.png"> 13</a>
+				<a href="#" style="float:left;"><img src="https://meta.stackexchange.com/content/Sites/stackexchangemeta/img/apple-touch-icon@2.png?v=c34d758b103d">					13</a>
+				<a href="#" style="float:right; margin-right: 0;"><img src="../images/share1.png" style="width: 18px"> 13</a>
+			</div>
+
+
+
+
+			<!--
+				<div class="comments-wrapper">
+						<div class="divcomments">
+				<div style="float: left">
+					<p style="font-weight: bold">1 Comment</p>
+				</div>
+					<div>
+					<button style="float: right; position: relative; top: 0.75em">Oldest&#9660</button>
+					<p style="float: right; margin-right: 1%">Sort By </p>
+				</div>
+
+				<div class="clearfix">
+					<hr style="border-top: solid #eeeeee 1px; margin: 5% 0;">
+				</div>
+					<div class="addcomments">
+					<img src=../images/devnet-octocat.png style="width: 50px; float: left; margin-right: 5%; border-radius: 50%;">
+					<input type="text" name="wordframe" placeholder="Add a comments..." style="float: left; padding: 2%;">
+				</div>
+
+				<div class="clearfix">
+				</div>
+
+				<div class="comments">
+					<img src=../images/devnet-octocat.png style="width: 50px; float: left; margin-right: 5%; border-radius: 50%;">
+					<div style="float:left">
+						<p style="color: #898da3"><a href="#">Dadang Kurniawan</a> - Developer at e-product</p>
+						<p> menarik sekali, +1 untuk postingan ini.</p>
+						<p style="color: #898da3"><a href="#" style="font-weight: normal">Like</a> - <a href="#" style="font-weight: normal">Reply</a> - Nov 11, 2016
+							10:50am</p>
+					</div>
+
+				</div>
+				</div>-->
 
 			<div class="clearfix">
 			</div>
 
 		</div>
 
-	</div>
+		</div>
 
-  </template>
+	</template>
 
-  <script>
-    Polymer({
-      is: 'devnet-article',
-    });
-  </script>
+	<script>
+		Polymer({
+			is: 'devnet-article',
+		});
+	</script>
 </dom-module>
