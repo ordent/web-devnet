@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="devnet-header.html">
 <dom-module id="devnet-app">
-  <template>
+    <template>
     <style include="shared-styles">
       :host {
         /*--app-primary-color: #4285f4;
@@ -102,76 +102,64 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </iron-pages>
         </div>
       </paper-header-panel>
-    <!--<app-drawer-layout fullbleed>-->
-      <!-- Drawer content -->
-      <!--<app-drawer id="drawer">
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
-        </iron-selector>
-      </app-drawer>-->
-
-      <!-- Main content -->
-      <!--<app-header-layout has-scrolling-region>
-
-        <app-header condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
-          </app-toolbar>
-        </app-header>-->
-
-        <!--<iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-          <devnet-main name="main"></devnet-main>-->
-          <!--<my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>-->
-        <!--</iron-pages>-->
-      <!--</app-header-layout>
-    </app-drawer-layout>-->
     </body>
   </template>
 
-  <script>
-    Polymer({
-      is: 'devnet-app',
-      ready : function(){
-        console.clear();
-      },
-      properties: {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged',
-        },
-      },
+    <script>
+        Polymer({
+            is: 'devnet-app',
+            ready: function() {
+                console.clear();
+            },
+            properties: {
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged',
+                },
+                navigationList: {
+                    type: Array,
+                    value: function() {
+                        return [{
+                            text: "Editor Pick",
+                            url: "http://google.com"
+                        }, {
+                            text: "Bookmarks",
+                            url: "http://google.com"
+                        }, {
+                            text: "Indonesia Android Kejar 2017",
+                            url: "http://google.com"
+                        }, {
+                            text: "Google Developer Group",
+                            url: "http://google.com"
+                        }, {
+                            text: "FemaleDev 2017",
+                            url: "http://google.com"
+                        }];
+                    }
+                }
+            },
 
-      observers: [
-        '_routePageChanged(routeData.page)',
-      ],
+            observers: [
+                '_routePageChanged(routeData.page)',
+            ],
 
-      _routePageChanged: function(page) {
-        this.page = page || 'main';
-        // if (!this.$.drawer.persistent) {
-        //   this.$.drawer.close();
-        // }
-      },
+            _routePageChanged: function(page) {
+                this.page = page || 'main';
+                // if (!this.$.drawer.persistent) {
+                //   this.$.drawer.close();
+                // }
+            },
 
-      _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('devnet-' + page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-      },
+            _pageChanged: function(page) {
+                // Load page import on demand. Show 404 page if fails
+                var resolvedPageUrl = this.resolveUrl('devnet-' + page + '.html');
+                this.importHref(resolvedPageUrl, null, this._showPage404, true);
+            },
 
-      _showPage404: function() {
-        this.page = 'view404';
-      },
-    });
-  </script>
+            _showPage404: function() {
+                this.page = 'view404';
+            }
+        });
+    </script>
 </dom-module>
