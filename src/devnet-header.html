@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 
 <link rel="import" href="devnet-navigation.html">
 <link rel="import" href="shared-styles.html">
@@ -60,6 +61,23 @@
         margin: 0 auto;
         @apply(--layout-horizontal);
       }
+
+      .login {
+        border-radius: 10px;
+        margin: 5%;
+      }
+
+      .login a {
+        text-decoration: none;
+        margin: auto;
+        text-align: center;
+        color: white;
+        padding: 2em;
+      }
+
+      .login span {
+        font-weight: bold;
+      }
      
     </style>
     <div class="navbar">
@@ -70,7 +88,24 @@
         <form class="navbar-search" action="">
           <input type="text">
         </form>
-        <paper-button raised class="green">Sign In / Sign up</paper-button>
+        <!-- <paper-button raised class="green" onclick="modal.open()">Sign In / Sign up</paper-button> -->
+
+        <paper-button raised on-tap="toggleDialog">open</paper-button>
+        <paper-dialog id="dialog" modal>
+          <paper-button dialog-confirm autofocus style="position: absolute; right: 0; z-index: 1; background: darkblue; margin: 0;">X</paper-button>
+          <img src="http://localhost:8080/images/devnet-logo.png" alt="S{}LVE.ID" style="background: blue; margin: 0; padding: 10em;">
+          <div style="width: 30%; margin: 0;">
+            <h2 style="color: green; border-top: solid green 5px; margin: 0;">Sign In/Sign Up</h2>
+          </div>
+          <div class ="login" style="background: blue">
+            <a href="#"">via <span>Facebook</span></a>
+          </div>
+          <div class ="login" style="background: red">
+            <a href="#">via <span>Google</span></a>
+          </div>
+          
+        </paper-dialog>
+
     </div>
   </template>
   <script>
@@ -95,6 +130,9 @@
           return true;
         }
         return false;
+      },
+      toggleDialog: function() {
+        this.$.dialog.toggle();
       }
     });
   </script>
