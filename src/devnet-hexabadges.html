@@ -14,42 +14,84 @@
 			margin-right: 1%;
 		}*/
 
-		.hexagon {
-		  position: relative;
-		  width: 50px; 
-		  height: 28.87px;
-		  background-color: #64C7CC;
-		  margin: 14.43px 5px;
+		#hex1 {
+		  width: 10px;
+		  height: 10px;
+		  text-align: center;
+		}
+		#color1 {
+		  background-color: #39D; 
 		}
 
-		.hexagon:before,
-		.hexagon:after {
-		  content: "";
-		  position: absolute;
-		  width: 0;
-		  border-left: 25px solid transparent;
-		  border-right: 25px solid transparent;
+		.hexagon-wrapper {
+		  text-align: center;
+		  margin: 3px;
+		  position: relative;
+		  display: inline-block;
 		}
+		.hexagon {
+		  height: calc(100% * 0.57735);
+		  width: 100%;
+		  display: flex;
+		  align-items: center;
+		}
+		.hexagon h5 {
+		  margin: 0;
+		  z-index: 1;
+		}
+
 
 		.hexagon:before {
-		  bottom: 100%;
-		  border-bottom: 14.43px solid #64C7CC;
+		  position: absolute;
+		  top: 0;
+		  right: calc((100% / 2) - ((100% * (1-0.57735)) / 2));
+		  background-color: inherit;
+		  height: inherit;
+		  width: inherit;
+		  content: '';
+		  transform: rotateZ(60deg);
+		}
+		.hexagon:after {
+		  position: absolute;
+		  top: 0;
+		  right: calc((100% / 2) - ((100% * (1-0.57735)) / 2));
+		  background-color: inherit;
+		  height: inherit;
+		  width: inherit;
+		  content: '';
+		  transform: rotateZ(-60deg);
 		}
 
-		.hexagon:after {
-		  top: 100%;
-		  width: 0;
-		  border-top: 14.43px solid #64C7CC;
-		}
 	</style>
 
-		<div class="hexagon"></div>
+		<div id="hex1" class="hexagon-wrapper">
+		    <div id="color1" class="hexagon"><h5>test</h5></div>
+		</div>
 	
   </template>
 
   <script>
     Polymer({
       is: 'devnet-hexabadges',
+
+      ready: function() {
+      	console.log(this.$.hex1);
+      	this.$.hex1.style.width = this.width+'px';
+      	this.$.hex1.style.height = this.height+'px';
+      },
+
+      properties: {
+      	width: {
+      		type: Number,
+      		value: 0,
+      		reflectedToAttributes: true
+      	},
+      	height: {
+      		type: Number,
+      		value: 0,
+      		reflectedToAttributes: true
+      	}
+      }
     });
   </script>
 
