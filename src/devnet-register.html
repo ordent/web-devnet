@@ -5,20 +5,27 @@
 <link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-
+<link rel="import" href="../bower_components/paper-date-picker-item/paper-date-picker-item.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-register">
     <template>
-  	<style include="shared-styles">
+  	<style include="shared-styles iron-flex iron-flex-factors" is="custom-style">
         :host {
             display: block;
+            margin-top:40px;
         }
 
         .container{
             margin: 0 auto;
             width: 1200px;
             background: white;
+            position: relative;
         }
 
         .contentleft {
@@ -39,27 +46,8 @@
         }
 
         paper-button {
-            float: right;
-            font-weight: bold;
+            margin: 0 auto;
         }
-
-        }
-
-    .col-md-4,
-    .col-md-12 {
-      position: relative;;
-      min-height: 1px;
-    }
-
-    .col-md-4 {
-          width: 33.33333333%;
-    }
-
-    .col-md-12 {
-      width: 100%;
-      padding-left: 15px;
-      padding-right: 15px;
-    }
 
     .card {
         margin: 24px;
@@ -76,62 +64,142 @@
       padding-right: 0;
     }
 
-    .card h2 {
-      padding-left: 1em;
-      border-left: 5px solid blue;
+    h2 {
+      padding: 1em;
+      background: var(--primary-color);
+      color: #FFF;
     }
 
-    .card h3 {
-      padding-left: 1em;
-      border-left: 5px solid blue;
-      margin-top: 0;
-    }
 
     .submit {
-      margin-top: 2%;
-      margin-bottom: 2%;
-      text-align: center;
       background: #3AA6C9;
       color: white;
+      width: 200px;
     }
 
+    .column{
+        padding: 10px 40px;
+    }
+
+    .footer{
+        text-align: center;
+        padding: 20px;
+    }
+
+    paper-dropdown-menu{
+        width : 100%;
+    }
+
+    paper-date-picker-item{
+        margin-top:20px;
+        border-bottom: 1px solid #333;
+    }
+
+    
   	</style>
 
     <div class="container">
-        <h3> Fill in the details to sign up: </h3>
-        <form is="iron-form" id="form" method="post" action="/form/handler">
-        <div class="contentleft">
-            <paper-input name="name" label="Name"></paper-input>
-            <paper-input name="username" label="Username"></paper-input>
-            <paper-input name="password" label="Password"></paper-input>
-            <paper-input name="repeatpass" label="Repeat Password"></paper-input>
-        </div>
+        <h2> Fill in the details to sign up: </h2>
 
-        <div class="contentright">
-            <paper-dropdown-menu label="Gender">
-              <paper-listbox class="dropdown-content" selected="0">
-                <paper-item>Male</paper-item>
-                <paper-item>Female</paper-item>
-              </paper-listbox>
-            </paper-dropdown-menu>
-            <paper-input name="email" label="Email"></paper-input>
-            <paper-input name="birthdate" label="Birth Date"></paper-input>
-            <paper-input name="phone" label="Phone"></paper-input>
-            <paper-button raised class="submit" name="submit">Submit</paper-button>
+       <div class="content">
+           <div class="layout horizontal">
+               <div class="column flex-1">
+                    <paper-input name="username" label="Email" id="usernameInput" required auto-validate></paper-input>                   
+               </div>
+               <div class="column flex-1">
+                    <paper-input id="name" label="Name"required></paper-input>
+               </div>
+           </div>
+           <div class="layout horizontal">
+               <div class="column flex-1">
+                   <paper-input name="password" label="Password" type="password" id="passwordInput" required auto-validate></paper-input>                                        
+               </div>
+               <div class="column flex-1">
+                   <paper-input id="repeatpass" label="Repeat Password" type="password" required></paper-input>
+               </div>
+           </div>
+           <div class="layout horizontal">
+               <div class="column flex-1">
+                    <paper-dropdown-menu label="Gender" id="sex">
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Male</paper-item>
+                            <paper-item>Female</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>                                     
+               </div>
+               <div class="column flex-1">
+                    <paper-date-picker-item icon="icons:date-range" placeholder="Birth Date" id="birth"></paper-date-picker-item>                   
+               </div>
+               <div class="column flex-1">
+                    <paper-input id="phone" label="Phone" required></paper-input>
+               </div>
+           </div>
+       </div>
+        <div class="footer">
+            <paper-button raised id="submitButton" class="submit" on-tap="registerHandler">REGISTER</paper-button>  
         </div>
-        </form>
-
-        <div class="clearfix">
-            
-        </div>
-
     </div>
-
+  <firebase-auth id="authHandler" user="{{user}}"></firebase-auth>
+  <firebase-document id="documentHandler"
+  path="/users/{{uid}}"
+  data="{{users}}">
+</firebase-document>
   </template>
 
     <script>
         Polymer({
             is: 'devnet-register',
+            properties: {
+                errorText: {
+                    type: String
+                },
+                uid: {
+                    type: String
+                },
+                users: {
+                    type: Object
+                }
+            },
+            ready: function() {
+                if (window.localStorage.getItem('users') != null) {
+                    window.location = location.origin + "?dialog=true&type=error&message=" + encodeURI("You must logout before accessing this page");
+                }
+            },
+            registerHandler: function() {
+                this.$.usernameInput.validate();
+                this.$.passwordInput.validate();
+                this.$.submitButton.disabled = true;
+                var username = this.$.usernameInput.value;
+                var password = this.$.passwordInput.value;
+                var page = this;
+                var errorHandler = function(response) {
+                    page.errorHandler(response);
+                }
+                var successHandler = function(response) {
+                    page.successHandler(response);
+                }
+                this.$.authHandler.createUserWithEmailAndPassword(username, password)
+                    .then(successHandler)
+                    .catch(errorHandler);
+            },
+            successHandler: function(response) {
+                this.uid = response.uid;
+                this.$.documentHandler.initializeStoredValue();
+                // this.$.submitButton.disabled = false;
+                this.users = {};
+                this.users.name = this.$.name.value;
+                this.users.sex = this.$.sex.value;
+                this.users.birth = this.$.birth.date;
+                this.users.email = this.$.email.value;
+                this.users.phone = this.$.phone.value;
+
+                this.$.documentHandler.save("users/", this.uid);
+            },
+            errorHandler: function(response) {
+                window.app.dialog.text = response.message;
+                window.app.dialog.open();
+                this.$.submitButton.disabled = false;
+            }
         });
     </script>
 </dom-module>

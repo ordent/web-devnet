@@ -6,38 +6,33 @@
 <link rel="import" href="devnet-navigation.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="devnet-header" >
+<dom-module id="devnet-header">
   <template>
-    <style include="shared-styles">
+    <style include="shared-styles iron-flex iron-flex-factors">
        :host {
         display: block;
       }
-      .navbar a{
-        display: block;
-      }
-      .brand img{
-        height: 25px;
-      }
+      
+     
+      
       .navbar {
-        width : 80%;
+        width: 80%;
       }
-  
-
-      paper-button {
-        background : var(--secondary-color);
+      
+      paper-button.green {
+        background: var(--secondary-color);
         color: #fff;
-        font-size:0.8em;
-        padding:10px;
+        font-size: 0.8em;
+        padding: 10px;
       }
-
+      
       paper-button a {
         text-decoration: none;
         color: white;
         font-weight: bold;
       }
       
-      .btn-send {
-      }
+      .btn-send {}
       
       .navbar paper-icon-button {
         color: white;
@@ -48,7 +43,6 @@
       }
       
       .navbar-search {
-        @apply(--layout-flex-2);
       }
       
       .navbar-search input[type=text] {
@@ -56,23 +50,22 @@
         border-radius: .2em;
         box-shadow: 0 .2em .2em rgba(0, 0, 0, 0.35);
         padding: .6em;
-        margin: 0 auto;
+        margin-left: 40px;
         min-height: 2em;
         outline: none;
         display: block;
         width: 80%;
       }
       
-      .navbar{
+      .navbar {
         margin: 0 auto;
-        @apply(--layout-horizontal);
       }
-
+      
       .login {
         border-radius: 10px;
         margin: 5%;
       }
-
+      
       .login a {
         text-decoration: none;
         margin: auto;
@@ -80,38 +73,73 @@
         color: white;
         padding: 2em;
       }
-
+      
       .login span {
         font-weight: bold;
       }
-     
+      
+      .brand img {
+        width: 75%;
+        min-width: 100px;
+        display: block;
+        margin: 5px auto;
+      }
+      .right{
+        margin-left: auto;
+      }
+      .column-brands{
+
+      }
+
+      @media screen and (max-width: 480px) {
+        .navbar{
+          flex-wrap: wrap;
+        }
+        .column{
+          margin: 5px auto;
+        }
+        .column-brands, .column-search{
+          max-width: 100%;
+          flex-basis: 100%;
+        }
+        .column-search .navbar-search input[type=text]{
+          margin : 10px 0;
+          width: 100%;
+          flex-basis: 100%;
+        }
+
+      }
     </style>
-    <div class="navbar">
-        <!--<paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>-->
+    <div class="navbar layout horizontal">
+      <div class="column column-brands flex-1">
         <a href="/" class="brand">
           <img src="../images/devnet-logo.png" alt="S{}LVE.ID">
         </a>
+      </div>
+      <div class="column column-search flex-2">
         <form class="navbar-search" action="">
           <input type="text">
         </form>
-        <paper-button raised class="green"><a href="/login">Login</a></paper-button>
-
-        <!-- <paper-button raised on-tap="toggleDialog">open</paper-button>
-        <paper-dialog id="dialog" modal>
-          <paper-button dialog-confirm autofocus style="position: absolute; right: 0; z-index: 1; background: darkblue; margin: 0;">X</paper-button>
-          <img src="http://localhost:8080/images/devnet-logo.png" alt="S{}LVE.ID" style="background: blue; margin: 0; padding: 10em;">
-          <div style="width: 30%; margin: 0;">
-            <h2 style="color: green; border-top: solid green 5px; margin: 0;">Sign In/Sign Up</h2>
-          </div>
-          <div class ="login" style="background: blue">
-            <a href="#"">via <span>Facebook</span></a>
-          </div>
-          <div class ="login" style="background: red">
-            <a href="#">via <span>Google</span></a>
-          </div>
-          
-        </paper-dialog> -->
-
+      </div>
+      <div class="column column-users flex-2 layout horizontal">
+        
+        <template is="dom-if" if={{users}}>
+          <div class="column flex-1 hide-sm">
+          <a href="/">
+            <paper-button>Home</paper-button>
+          </a>
+          <a href="/profile">
+            <paper-button>Profile</paper-button>
+          </a>
+        </div>
+        </template>
+        
+        <div class="column flex-1 layout horizontal">
+          <a href="/login" class="column right">
+            <paper-button raised class="green">Sign In/Sign Up</paper-button>
+          </a>
+        </div>
+      </div>
     </div>
   </template>
   <script>
@@ -121,15 +149,19 @@
         navigationList: {
           type: Array,
           value: function () {
-            return [
-
-            ];
+            return [];
           },
           reflectToAttribute: true
+        },
+        users : {
+          type: Object
         }
       },
       ready: function () {
-
+        this.users = window.localStorage.getItem("users");
+      },
+      isTest : function(){
+        return "test";
       },
       isNavigationListNotEmpty: function () {
         if (this.navigationList.length == 0) {
@@ -137,7 +169,13 @@
         }
         return false;
       },
-      toggleDialog: function() {
+      isUserExist : function(){
+        if(window.localStorage.getItem("users") != null){
+          return true;
+        }
+        return false;
+      },
+      toggleDialog: function () {
         this.$.dialog.toggle();
       }
     });

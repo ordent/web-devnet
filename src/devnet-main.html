@@ -5,24 +5,16 @@
 <link rel="import" href="devnet-navigation.html">
 <link rel="import" href="devnet-sidebar.html">
 <link rel="import" href="devnet-entry.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 
 <dom-module id="devnet-main">
-    <style include="iron-flex iron-flex-factors">
+    <style include="shared-styles iron-flex iron-flex-factors">
          :host {
             display: block;
             /*min-height: 800px;*/
         }
-        
-        .wrapper {
-            margin: 0 auto;
-            margin: 40px 100px 40px 100px;
-        }
-        
-        .left {}
-        
-        .child {
-            padding: 0 40px;
-        }
+
         
         .right {}
     </style>
@@ -36,6 +28,7 @@
         <devnet-sidebar></devnet-sidebar>
       </div>
     </div>
+
   </template>
     <script>
         Polymer({

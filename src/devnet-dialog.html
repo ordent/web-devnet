@@ -1,0 +1,79 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<dom-module id="devnet-dialog">
+    <style is="custom">
+        paper-dialog {
+            min-width: 600px;
+        }
+        
+        paper-dialog h2 {
+            color: 333;
+            margin: 0 !important;
+            padding: 10px !important;
+            text-transform: uppercase;
+        }
+        
+        paper-dialog.error h2 {
+            background: darkred;
+            color: #FFF;
+        }
+        
+        paper-dialog.success h2 {
+            background: darkgreen;
+            color: #FFF;
+        }
+        
+        paper-dialog h5 {
+            font-size: 1em;
+        }
+        
+        paper-dialog .content {
+            padding: 0 20px 20px 20px;
+        }
+        
+        paper-dialog paper-button {
+            margin: 0 auto !important;
+            padding: 10px !important;
+            background: var(--primary-color);
+            color: #FFF;
+        }
+        
+        paper-dialog .footer {
+            text-align: center;
+        }
+    </style>
+    <template>
+       <paper-dialog id="dialog" class$="{{type}}">
+        <h2>{{type}}</h2>
+          <div class="content">
+              <h5>{{text}}</h5>
+          <div class="footer">
+              <paper-button raised dialog-dismiss>Okay</paper-button>
+          </div>
+          </div>
+      </paper-dialog>
+    </template>
+    <script>
+        Polymer({
+            is: 'devnet-dialog',
+            properties: {
+                text: {
+                    type: String,
+                    value: "No Error",
+                    reflectToAttribute: true
+                },
+                type: {
+                    type: String,
+                    value: "error",
+                    reflectToAttribute: true
+                }
+            },
+            ready: function() {
+                console.info("open");
+            },
+            open: function() {
+                this.$.dialog.open();
+            }
+        });
+    </script>
+</dom-module>
