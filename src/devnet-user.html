@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="../src/devnet-hexabadges.html">
+<link rel="import" href="../src/devnet-gridbadges.html">
 <link rel="import" href="../src/devnet-bio.html">
 <link rel="import" href="../src/devnet-skills.html">
 <link rel="import" href="../src/devnet-collection.html">
@@ -9,35 +10,9 @@
 
 <dom-module id="devnet-user">
   <template>
-    <style include="shared-styles">
+    <style is="custom-style" include="iron-flex iron-flex-factors">
     :host {
         display: block;
-    }
-
-    .card {
-        margin: 24px;
-        padding: 16px;
-        color: #757575;
-        border-radius: 5px;
-        background-color: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-      }
-
-    .card {
-      padding-left: 0;
-      padding-bottom: 0;
-      padding-right: 0;
-    }
-
-    .card h2 {
-      padding-left: 1em;
-      border-left: 5px solid blue;
-    }
-
-    .card h3 {
-      padding-left: 1em;
-      border-left: 5px solid blue;
-      margin-top: 0;
     }
 
     .container {
@@ -46,21 +21,57 @@
       max-width: 64.5em;
     }
 
+    h3 {
+      color: #5E5E5E;
+      width: 33%;
+      margin: 0;
+    }
+
+    .content {
+      width: 33%;
+    }
+
     </style>
 
     <!-- user-profile -->
     <devnet-bio></devnet-bio>
     
     <div class="container">
-      <devnet-skills></devnet-skills>
+      <h3>My Skill</h3>
+
+      <div class="layout horizontal wrap">
+        <div class="content">
+          <devnet-skills></devnet-skills>
+        </div>
+        <div class="content">
+          <devnet-skills></devnet-skills>
+        </div>
+        <div class="content">
+          <devnet-skills></devnet-skills>
+        </div>
+      </div>
 
       <hr style="border-top: 1px solid #eee">
 
-      <devnet-collection></devnet-collection>
+      <h3>My Collection</h3>
+
+      <div class="layout horizontal wrap">
+        <div class="content">
+          <devnet-collection></devnet-collection>
+        </div>
+        <div class="content">
+          <devnet-collection></devnet-collection>
+        </div>
+        <div class="content">
+          <devnet-collection></devnet-collection>
+        </div>
+      </div>
+
+      
 
       <hr style="border-top: 1px solid #eee; margin-bottom: 5%;">
 
-      <devnet-hexabadges></devnet-hexabadges>
+      <devnet-gridbadges></devnet-gridbadges>
 
     </div>
 

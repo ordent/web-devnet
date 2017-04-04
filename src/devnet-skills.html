@@ -1,16 +1,43 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../src/devnet-hexabadges.html">
 
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-skills">
   <template>
-  	<style include="shared-styles">
+    <style include="iron-flex iron-flex-factors">
 
     span {
     	font-weight: bold;
     }
 
+    .card {
+      margin: 5%;
+      padding: 16px 0;
+      color: #757575;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    }
+    .card h2 {
+      padding-left: 1em;
+      border-left: 5px solid blue;
+    }
+    .card .badges,
+    .card .detail {
+      margin-top: 2em;
+      margin-left: 2em;
+    }
+    .card .detail p {
+      margin: 0;
+    }
+    .card .badges devnet-hexabadges {
+    }
 
+
+/*
    .col-md-4 {
       float: left;
     }
@@ -87,10 +114,25 @@
 	}
 
 
-
+*/
   	</style>
+
+      <div class="card">
+        <h2>PHP</h2>
+        <div class="detail">
+          <p>Rank #123 from #10000</p>
+          <p style="color: darkgrey">"some text here"</p>
+          <p style="color: darkgrey">"some text here"</p>
+        </div>
+        
+        <div class="layout horizontal wrap badges">
+          <devnet-hexabadges></devnet-hexabadges>
+          <devnet-hexabadges></devnet-hexabadges>
+        </div>
+      </div>
+
 	<!-- Skills -->
-    	<div class="col-md-12">
+<!--     	<div class="col-md-12">
     		<span style="color:#5E5E5E">My Skill</span>
     	</div>
 
@@ -129,7 +171,7 @@
 				</div>
     		</div>
     	</div>
-
+ -->
   </template>
 
   <script>
