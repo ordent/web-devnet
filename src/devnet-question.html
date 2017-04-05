@@ -5,169 +5,83 @@
 
 <link rel="import" href="my-icons.html">
 <dom-module id="devnet-question">
-	<template>
+    <template>
 		<style is="custom-style" include="iron-flex iron-flex-factors">
 			:host {
 				background: #FFF;
 				display: block;
-				border-radius: 10px;
+				border-radius:10px;
+			}
+		
+			iron-icon{
+				color:lightgrey;
 			}
 			
-			span {
-				float: left;
-				margin: 0;
-			}
-			
-			.name span {
-				color: blue;
-			}
-			
-			.left,
-			.middle,
-			.right {
-				align-items: center;
-				display: inline-block;
-				vertical-align: top;
-			}
-			
-			.left {
-				width: 15%;
-				margin: 5% 0 0 2.5%;
-			}
-			
-			.middle {
-				width: 70%;
-				margin: 5% 0 0 0%;
-			}
-			
-			.right {
-				width: 5%;
-				position: relative;
-				bottom: 2em;
-				margin-top: 5%;
-			}
-			
-			.reaction {
-				margin: 2% 5% 2% 5%;
-			}
-			
-			.reaction a {
-				margin-right: 5%;
-				position: relative;
-				color: black;
-			}
-			
-			.reaction img {
-				width: 20px;
-			}
-			
-			.clearfix {
-				clear: both;
-			}
-			
-			.entry {
-				margin: 3%;
-				font-size: 14px;
-				text-align: justify;
-				line-height: 1.5em;
-			}
-			
-			.divcomments {
-				margin: 0 0 5% 0;
-				padding: 0 5% 5% 5%;
-				background: #F9F9F9;
-			}
-			
-			.comments {
-				margin: 5% 0;
-			}
-			
-			.comments p {
-				margin: 5px 0;
-			}
-			
-			.comments a {
-				color: blue;
-				font-weight: bold;
-			}
-			
-			.comments img,
-			.addcomments img,
-			.addcomments input {
-				float: left;
-			}
-			
-			.comments img,
-			.addcomments img {
-				width: 50px;
-				margin-right;
-			}
-			
-			.addcomments input {
-				padding: 2%;
-				width: 80%;
-			}
-			
-			.card {
-				padding: 0;
-			}
-			
-			.header {
+			.header{
 				padding: 20px;
 			}
-			
-			.entry-avatar {
+			.entry-avatar{
 				width: 10%;
 			}
-			
-			.entry-avatar img {
-				border-radius: 50%;
-				width: 100%;
-				height: 100%;
+			.entry-avatar img{
+				border-radius:50%;
 			}
-			
-			.entry-main {
+			.entry-main{
 				width: 85%;
 				color: lightgrey;
 			}
-			
-			.entry-main a {
+			.entry-main h5{
+				margin: 0;
+				font-weight: 400;
+			}
+			.entry-main a{
 				text-decoration: none;
 				font-size: 1.4em;
+				color: var(--primary-color);
 			}
-			
-			.entry-main p {
-				font-size: 0.8em;
+			.entry-main p{
+				font-size:0.8em;
+				color: darkgray;
+				margin: 0;
 			}
-			
-			.entry-options {
+			.entry-avatar img{
+				width: 50px; 
+				height: 50px; 
+				float: left; 
+				border-radius: 50%;
+			}
+			.entry-options{
 				widows: 5%;
 			}
-			
-			.entry-content {
-				padding: 20px;
+			.entry-content{
+				padding:20px;
+				background: #FCFCFC;
+				margin-bottom: 20px;
 			}
-			
-			.entry-content .title {
+			.entry-content .title{
 				text-decoration: none;
+				color:#333;				
 			}
-			
-			.entry-content p {
-				color: gray;
+			.entry-content p{
+				color:#333;
+				font-weight: 300;
+				font-size: 0.9em;
 			}
+
 			.entry-reaction{
-				padding: 20px;
+				padding:20px 0;
 			}
-			.entry-options paper-icon-button{
-				color: orangered;
+
+			.entry-reaction .column-bookmarks{
+				margin-left:auto;
 			}
-			paper-button iron-icon{
+			.entry-reaction iron-icon{
 				margin-right: 10px;
-				color:lightgray;
 			}
-			.column-likes{
-				width:80px;
+			.column-likes iron-icon{
+				color: deeppink;
 			}
+
 			.column-comments{
 				width:80px;
 			}
@@ -190,16 +104,21 @@
 				float: left;
 				border-radius: 50%;
 			}
+
+			.column-bookmarks iron-icon{
+				color: var(--primary-color);
+			}
+			
 		</style>
 
 		<div class="card">
 			<div class="header layout horizontal">
 				<div class="entry-avatar">
-					<a class="user" href="/user"><img src="../images/devnet-octocat.png"></a>
+					<a href="/user"><img src="../images/devnet-octocat.png"></a>
 				</div>
 				<div class="entry-main">
-					<span name="name" style="width: 100%;"><a href="/user" style="color: blue">Justin</a> ask about <a href="#"> CSS </a></span>
-					<p style="color: #898da3">13 Minutes Ago</p>
+					<h5><a href="">Justin</a> ask about <span>CSS</span></h5>
+					<p>13 Minutes Ago</p>
 				</div>
 				<div class="entry-options">
 					<paper-icon-button icon="my-icons2:two-dots"></paper-icon-button>
@@ -227,46 +146,9 @@
 				<div class=" column-answer">
 					<paper-button raised class="green" name="answer">Answer</paper-button>
 				</div>
-				<!--<a href="#" style="float:left;"><img src="../images/picture1.png"> 13</a>-->
-				<!--<a href="#" style="float:left;"><img src="https://meta.stackexchange.com/content/Sites/stackexchangemeta/img/apple-touch-icon@2.png?v=c34d758b103d">					13</a>
-				<a href="#" style="float:right; margin-right: 0;"><img src="../images/share1.png" style="width: 18px"> 13</a>-->
 			</div>
 
 
-
-			<!--
-				<div class="comments-wrapper">
-						<div class="divcomments">
-				<div style="float: left">
-					<p style="font-weight: bold">1 Comment</p>
-				</div>
-					<div>
-					<button style="float: right; position: relative; top: 0.75em">Oldest&#9660</button>
-					<p style="float: right; margin-right: 1%">Sort By </p>
-				</div>
-
-				<div class="clearfix">
-					<hr style="border-top: solid #eeeeee 1px; margin: 5% 0;">
-				</div>
-					<div class="addcomments">
-					<img src=../images/devnet-octocat.png style="width: 50px; float: left; margin-right: 5%; border-radius: 50%;">
-					<input type="text" name="wordframe" placeholder="Add a comments..." style="float: left; padding: 2%;">
-				</div>
-
-				<div class="clearfix">
-				</div>
-
-				<div class="comments">
-					<img src=../images/devnet-octocat.png style="width: 50px; float: left; margin-right: 5%; border-radius: 50%;">
-					<div style="float:left">
-						<p style="color: #898da3"><a href="#">Dadang Kurniawan</a> - Developer at e-product</p>
-						<p> menarik sekali, +1 untuk postingan ini.</p>
-						<p style="color: #898da3"><a href="#" style="font-weight: normal">Like</a> - <a href="#" style="font-weight: normal">Reply</a> - Nov 11, 2016
-							10:50am</p>
-					</div>
-
-				</div>
-				</div>-->
 
 			<div class="clearfix">
 			</div>
@@ -277,9 +159,9 @@
 
 	</template>
 
-	<script>
-		Polymer({
-			is: 'devnet-question',
-		});
-	</script>
+    <script>
+        Polymer({
+            is: 'devnet-question',
+        });
+    </script>
 </dom-module>

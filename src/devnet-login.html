@@ -1,57 +1,18 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+
+
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="my-icons.html">
 <link rel="import" href="my-icons.html">
 
 <dom-module id="devnet-login">
-  <style include="shared-styles">
-     :host {
-      display: block;
-      /*min-height: 800px;*/
-    }
-
-    .card {
-        width: 75%;
-        margin: 5% auto;
-        padding: 16px;
-        color: #757575;
-        border-radius: 5px;
-        background-color: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-      }
-
-    .card {
-      padding-left: 0;
-      padding-bottom: 0;
-      padding-right: 0;
-    }
-
-    .card p{
-      margin-left: 5%;
-      font-weight: bold;
-    }
-
-    .card h2 {
-      padding-left: 1em;
-      border-left: 5px solid blue;
-    }
-
-    .card h3 {
-      padding-left: 1em;
-      border-left: 5px solid blue;
-      margin-top: 0;
-    }
-
-    .left {
-      float: left;
-      width: 40%;
-    }
-
-    .right {
-      float: right;
-      width: 40%;
     }
 
     .left,
@@ -120,38 +81,209 @@
 
         <div>
         <paper-button raised class="submit">Login</paper-button>
+=======
+    <style include="shared-styles iron-flex iron-flex-factors" is="custom-style">
+         :host {
+            display: block;
+            /*min-height: 800px;*/
+        }
+        
+        .container {
+            width: 640px;
+            margin: 0 auto;
+        }
+        
+        h2.title {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            margin: 0;
+        }
+        
+        .card {
+            color: #757575;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card {
+            padding-left: 0;
+            padding-bottom: 0;
+            padding-right: 0;
+        }
+        
+        .card p {
+            margin-left: 5%;
+            font-weight: bold;
+        }
+        
+        paper-input {
+            width: 40%;
+        }
+        
+        .register {
+            margin-top: 2%;
+            margin-bottom: 2%;
+            text-align: center;
+            background: #89B9C9;
+        }
+        
+        .register a {
+            color: white;
+        }
+        
+        paper-button {
+            font-weight: bold;
+        }
+        
+        paper-button a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        paper-button img {
+            width: 50px;
+        }
+        
+        .facebook,
+        .google {
+            width: 80px;
+            margin-left: 5%;
+            float: left;
+        }
+        
+        .clearfix {
+            clear: both;
+        }
+        
+        .submit {
+            margin-top: 5%;
+            margin-right: 5%;
+            background: #3AA6C9;
+            color: white;
+        }
+        
+        .column {
+            padding: 20px;
+        }
+        
+        .column paper-input {
+            width: 100%;
+        }
+        
+        .submit {
+            width: 100%;
+        }
+    </style>
+    <template>
+    <div class="container">
+      <div class="card">
+        <h2 class="title">
+          PLEASE LOGIN
+        </h2>
+    	  <div class="content layout horizontal">
+          <div class="left flex-1 column">
+            <paper-input name="username" label="Username" id="usernameInput" required></paper-input>
+            <paper-input name="password" label="Password" type="password" id="passwordInput" required></paper-input>
+          <div>
+          <paper-button raised class="submit" on-tap="loginHandler">Login</paper-button>
+
         </div>
       </div>
 
-      <div class="right">
-        <p> or Login with :</p>
-        <div class="facebook">
+      <div class="right flex-1 column">
+        <p>Access with : </p>
+        <!--<div class="facebook">
           <paper-button><img src="../images/facebook.svg"></paper-button>
-        </div>
+        </div>-->
         <div class="google">
-          <paper-button><img src="../images/google.svg"></paper-button>       
+          <paper-button on-tap="googleHandler"><img src="../images/google.svg"></paper-button>
         </div>
       </div>
+        </div>
       
-      <div class="clearfix">
-      </div>
-  		
-
   		<hr>
+  		<div style="text-align: center;">
+      	<a href="/register"><paper-button class="register" raised>Create a new account</paper-button></a>
 
-  		<div class="reg">
-      	<paper-button class="register" raised><a href="/register">Create a new account</a></paper-button>
       </div>
 
-      <div class="clearfix">
-      </div>
     </div>
+    </div>
+   <!--<firebase-app id="appGlobal" auth-domain="devnet-4bacc.firebaseapp.com" database-url="https://devnet-4bacc.firebaseio.com" api-key="AIzaSyArvGlygXCkGlSqiHUhRFtU_J9jye-pQi8"></firebase-app> -->
+  <firebase-auth id="authHandler" user="{{user}}"></firebase-auth>
+  <!--<paper-dialog id="errorDialog" class="error">
+    <h2>ERROR</h2>
+    <div class="content">
+        <h5>{{errorText}}</h5>
+    <div class="footer">
+        <paper-button raised dialog-dismiss>Okay</paper-button>
+    </div>
+    </div>
+  </paper-dialog>-->
   </template>
-  <script>
-    Polymer({
-      is: 'devnet-login',
-      properties: {
-      }
-    });
-  </script>
+    <script>
+        Polymer({
+            is: 'devnet-login',
+            properties: {
+                errorText: {
+                    type: String,
+                    value: "No Error"
+                }
+            },
+            ready: function() {
+                if (window.localStorage.getItem('users') != null) {
+                    window.location = location.origin + "?dialog=true&type=error&message=" + encodeURI("You must logout before accessing this page");
+                }
+                // this.$.authHandler.app = window.app.app.app;
+                // console.log(window.app.app.app);
+                // console.log(this.$.appGlobal.app);
+                // console.log(window.app.app.app.auth());
+            },
+            loginHandler: function(e) {
+                var username = this.$.usernameInput.value;
+                var password = this.$.passwordInput.value;
+                var page = this;
+                this.$.usernameInput.validate();
+                this.$.passwordInput.validate();
+                var errorHandler = function(response) {
+                    page.errorHandler(response);
+                }
+                var successHandler = function(response) {
+                    page.successHandler(response);
+                }
+                this.$.authHandler.signInWithEmailAndPassword(username, password)
+                    .then(successHandler)
+                    .catch(errorHandler);
+            },
+            googleHandler: function(e) {
+                var page = this;
+                var errorHandler = function(response) {
+                    page.errorHandler(response);
+                }
+                var successHandler = function(response) {
+                    page.successHandler(response);
+                }
+                this.$.authHandler.signInWithPopup("google")
+                    .then(successHandler)
+                    .catch(errorHandler);
+            },
+            successHandler: function(response) {
+                var users = {};
+                users.provider = response;
+                users.data = {};
+                window.localStorage.setItem("users", JSON.stringify(users));
+
+                window.location = location.origin + "?dialog=true&type=success&message=" + encodeURI("You have been successfully login");
+
+            },
+            errorHandler: function(response) {
+                window.app.dialog.text = response.message;
+                window.app.dialog.open();
+                // window.location = location.pathname + "?error=true&message=" + encodeURI(response.message);
+            }
+        });
+    </script>
 </dom-module>
