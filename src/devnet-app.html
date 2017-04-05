@@ -22,107 +22,132 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
 <link rel="import" href="my-icons.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="devnet-header.html">
+<link rel="import" href="devnet-dialog.html">
+
 <dom-module id="devnet-app">
     <template>
-    <style include="shared-styles">
-      :host {
-        /*--app-primary-color: #4285f4;
+        <style include="shared-styles iron-flex iron-flex-factors" is="custom-styles">
+             :host {
+                /*--app-primary-color: #4285f4;
         --app-secondary-color: black;*/
+                display: block;
+                /*min-height: 800px;*/
+            }
+            
+            app-header {
+                color: #fff;
+                background-color: var(--app-primary-color);
+            }
+            
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+            
+            .drawer-list {
+                margin: 0 20px;
+            }
+            
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+                line-height: 40px;
+            }
+            
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+            
+            .paper-header {
+                background: var(--primary-color);
+                padding: 15px 0 0 0;
+            }
+            
+            devnet-header {
+                margin-bottom: 15px;
+            }
+            
+            .content {
+                display: block;
+                z-index: 100;
+                height: 100%;
+            }
+            
+            iron-pages {
+                /*min-height: 800px;*/
+            }
+            
+            paper-header-panel {
+                min-height: 1000px;
+            }
+        </style>
 
-        display: block;
-        /*min-height: 800px;*/
-      }
+        <body class="fullbleed layout vertical">
+            <app-location route="{{route}}"></app-location>
+            <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
-
-      .drawer-list {
-        margin: 0 20px;
-      }
-
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
-      }
-
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
-      }
-      .paper-header{
-        background: var(--primary-color);
-        padding: 15px 0 0 0;
-      }
-      devnet-header{
-        margin-bottom : 15px;
-      }
-      .content{
-          display: block;
-          z-index: 100;
-          height: 100%;
-      }
-      iron-pages{
-        /*min-height: 800px;*/
-      }
-      paper-header-panel{
-        min-height: 1000px;
-      }
-    </style>
-    <body class="fullbleed layout vertical">
-      <app-location route="{{route}}"></app-location>
-      <app-route
-          route="{{route}}"
-          pattern="/:page"
-          data="{{routeData}}"
-          tail="{{subroute}}"></app-route>
-      
-      <paper-header-panel class="flex" mode="waterfall">
-        <div class="paper-header">
-          <devnet-header></devnet-header>
-          <devnet-navigation lists=[[navigationList]]></devnet-navigation>
-        </div>
-        <div class="content fit">
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-          <devnet-main name="main"></devnet-main>
-          <devnet-login name="login"></devnet-login>
-          <devnet-register name="register"></devnet-register>
-          <devnet-user name="user"></devnet-user>
-        </iron-pages>
-        </div>
-      </paper-header-panel>
-    </body>
-  </template>
+            <paper-header-panel class="flex" mode="waterfall">
+                <div class="paper-header">
+                    <devnet-header></devnet-header>
+                    <devnet-navigation lists=[[navigationList]] class="hide-sm"></devnet-navigation>
+                </div>
+                <div class="content fit">
+                    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+                        <devnet-main name="main"></devnet-main>
+                        <devnet-login name="login"></devnet-login>
+                        <devnet-register name="register"></devnet-register>
+                        <devnet-user name="user"></devnet-user>
+                    </iron-pages>
+                </div>
+            </paper-header-panel>
+            <firebase-app id="appGlobal" auth-domain="devnet-4bacc.firebaseapp.com" database-url="https://devnet-4bacc.firebaseio.com"
+                api-key="AIzaSyArvGlygXCkGlSqiHUhRFtU_J9jye-pQi8"></firebase-app>
+            <devnet-dialog id="dialog"></devnet-dialog>
+        </body>
+    </template>
 
     <script>
         Polymer({
             is: 'devnet-app',
-            ready: function() {
-                console.clear();
+            ready: function () {
+
+                // Initialize App
+                window.app = {};
+                window.app.dialog = this.$.dialog;
+                // Check if there is any message
+                if (this.route.__queryParams.dialog) {
+                    this.$.dialog.type = this.route.__queryParams.type || "error";
+                    this.$.dialog.text = this.route.__queryParams.message;
+                    this.$.dialog.open();
+                }
+                // Chekk if users already login
+                if(window.localStorage.getItem("users")){
+                    this.users = window.localStorage.getItem("users");
+                }
             },
             properties: {
+                errorText: {
+                    type: String,
+                },
                 page: {
                     type: String,
                     reflectToAttribute: true,
                     observer: '_pageChanged',
                 },
+                users : {
+                    type : Object
+                },
                 navigationList: {
                     type: Array,
-                    value: function() {
+                    value: function () {
                         return [{
                             text: "Editor Pick",
                             url: "http://google.com"
@@ -147,20 +172,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 '_routePageChanged(routeData.page)',
             ],
 
-            _routePageChanged: function(page) {
+            _routePageChanged: function (page) {
                 this.page = page || 'main';
                 // if (!this.$.drawer.persistent) {
                 //   this.$.drawer.close();
                 // }
             },
 
-            _pageChanged: function(page) {
+            _pageChanged: function (page) {
                 // Load page import on demand. Show 404 page if fails
                 var resolvedPageUrl = this.resolveUrl('devnet-' + page + '.html');
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 
-            _showPage404: function() {
+            _showPage404: function () {
                 this.page = 'view404';
             }
         });

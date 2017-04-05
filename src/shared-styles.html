@@ -12,24 +12,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!-- shared styles for all views -->
 <dom-module id="shared-styles">
-  <template>
+    <template>
     <style>
       :host{
         --primary-color : #3f51b5;
         --secondary-color : #7BC674;
       }
-
+      .hide-sm{
+          display: none;
+      }
+      .wrapper{
+        margin: 40px 5px;
+        flex-wrap: wrap;
+      }
+              
+        .child {
+            padding: 0 5px;
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+      @media (min-width : 360px){
+        .hide-sm{
+          display:block;
+        }
+        .wrapper{
+          margin: 40px 100px;
+        }
+                
+        .child {
+            padding: 0 40px;
+        }
+      }
       .container {
         margin: 0 auto;
-        padding: 1em;
-        max-width: 64.5em;
+        /*padding: 1em;*/
+        /*max-width: 64.5em;*/
       }
 
+        a paper-button{
+            color: #FFF;
+            text-decoration: none;
+        }
 
-   .col-md-4 {
-      float: left;
-    }
-	
+        a:-webkit-any-link{
+            text-decoration: none;
+        }
+        
     </style>
   </template>
 </dom-module>
