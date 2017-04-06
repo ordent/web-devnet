@@ -5,7 +5,38 @@
 
 <dom-module id="devnet-hexabadges">
   <template>
-	<style include="iron-flex iron-flex-factors">
+	<style is="custom-style" include="iron-flex iron-flex-factors">
+
+		#square1 {
+		  width: 10px;
+		  height: 10px;
+		}
+		#color1 {
+		  
+		  background-image: url('../images/devnet-octocat.png');
+
+		  height: 100%;
+		  width: 100%;
+		  display: flex;
+		  align-items: center;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		  background-position: center;
+		}
+		.square-wrapper {
+		  text-align: center;
+		  margin: 3px;
+		  position: relative;
+		  display: inline-block;
+		}
+		.square {
+		  background-color: transparent;
+		}
+		.square img {
+			width: 100%;
+			
+		}
+
 /*
 		#hex1 {
 		  width: 10px;
@@ -64,7 +95,7 @@
 */
 		/*--------------------------*/
 
-		.container {
+/*		.container {
 		  margin: 10px;
 		  font-size:16px;
 		}
@@ -72,7 +103,7 @@
 		.hex {
 		  position: relative;
 		  font-size:10em;
-		  transform: scale(var(hexabadges-size-x),var(hexabadges-size-y));
+		  transform: scale(1,.9);
 		  float:left;
 		  cursor:pointer;
 		  font-family: 'unifont';
@@ -96,70 +127,30 @@
 		  display:block;
 		  margin-top:-32px;
 		}
-		/*
-		.twitter {
-		 color: #08A4CA; 
-		}
-		.twitter::after {
-		  color: #34C6F3;
-		}
-		.twitter::before {
-		  
-		  background: url('http://i.imgur.com/MRS8s.png');
-		}
-		*/
 		.content {
-		  /*background color*/
-		  color:#242424;
+		  background color
+		  color:{{color}};
 		}
 		.content::after {
-		  /*background border color*/
+		  background border color
 		  color:#999;
 		}
 		.content::before {
-		  /*background image*/
+		  background image
 		  background: url('http://i.imgur.com/0eBXG.png');
-		}
-/*
-		.codepen {
-		  color:#F1DA3C;
-		}
-		.codepen::after {
-		  color:#F4E368;
-		}
-		.codepen::before {
-		  background: url('http://i.imgur.com/gEa5t.png');
-		}
-
-		.email {
-		  color:#A0B23B;
-		}
-		.email::after {
-		  color:#ADBF4D;
-		}
-		.email::before {
-		  background: url('http://i.imgur.com/rhrJA.png');
-		}
-
-		.reddit {
-		  color:#3A3AFF;
-		}
-		.reddit::after {
-		  color:#FF4500;
-		}
-		.reddit::before {
-		  background: url('http://i.imgur.com/QPaQj.png');
 		}
 */
 	</style>
-<!-- 
-		<div id="hex1" class="hexagon-wrapper">
-			<img src="../images/devnet-login-background.jpg";>
-		    <div id="color1" class="hexagon"><h5>test</h5></div>
-		</div>
-	 -->
 
-	 	<div class="hex color">⬢</div>
+		<div id="square1" class="square-wrapper">
+		    <div id="color1" class="square">
+		    	<!-- <img src="../images/devnet-octocat.png"> -->
+		    	<!-- <p>PHP</p> -->
+		    </div>
+		</div>
+	
+
+	 	<!-- <div class="hex content">⬢</div> -->
 
   </template>
 
@@ -168,45 +159,51 @@
       is: 'devnet-hexabadges',
 
       ready: function() {
-      	this.$.content.style.color = this.color;
+      	console.log(this.$.color1.style.background);
+      	this.$.square1.style.width = this.width + 'px';
+      	this.$.square1.style.height = this.height + 'px';
+      	this.$.color1.style.backgroundImage = 'url(http://localhost:8080' + this.backgroundImage + ')';
       	// this.$.content::after.style.color = this.border;
       	// this.$.content::before.style.background = this.background;
-      	this.$.content.style.color = this.color;
+      	// this.$.hex.style.transform = this.color;
       },
 
       properties: {
-      	color: {
+      	width: {
       		type: Number,
-      		value: 0,
+      		value: "100",
       		reflectedToAttributes: true
       	},
-      	border: {
+      	height: {
       		type: Number,
-      		value: 0,
+      		value: "100",
       		reflectedToAttributes: true
       	},
-      	background: {
-      		type: Number,
-      		value: 0,
+      	backgroundImage: {
+      		type: String,
+      		value: "../images/hexagon-twitter.png",
       		reflectedToAttributes: true
       	},
-      	--hexabadges-size-x: {
-      		type: Number,
-      		value: 1,
-      		reflectedToAttributes: true
-      	},
-      	--hexabadges-size-y: {
-      		type: Number,
-      		value: .9,
-      		reflectedToAttributes: true
+      	text: {
+      		type: String,
       	}
+      	// --hexabadges-size-x: {
+      	// 	type: Number,
+      	// 	value: 1,
+      	// 	reflectedToAttributes: true
+      	// },
+      	// --hexabadges-size-y: {
+      	// 	type: Number,
+      	// 	value: .9,
+      	// 	reflectedToAttributes: true
+      	// }
       },
 
-      changeSize: function() {
-      	this.customStyle['--hexabadges-size-x'] = '1';
-      	this.customStyle['--hexabadges-size-y'] = '.9';
-      	this.updateStyles();
-      }
+      // changeSize: function() {
+      // 	this.customStyle['--hexabadges-size-x'] = '1';
+      // 	this.customStyle['--hexabadges-size-y'] = '.9';
+      // 	this.updateStyles();
+      // }
     });
   </script>
 
