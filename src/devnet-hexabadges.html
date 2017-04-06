@@ -5,15 +5,39 @@
 
 <dom-module id="devnet-hexabadges">
   <template>
-	<style include="iron-flex iron-flex-factors">
-		/*img {
-			-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-			clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-			width: 50px;
-			height: 50px;
-			margin-right: 1%;
-		}*/
+	<style is="custom-style" include="iron-flex iron-flex-factors">
 
+		#square1 {
+		  width: 10px;
+		  height: 10px;
+		}
+		#color1 {
+		  
+		  background-image: url('../images/devnet-octocat.png');
+
+		  height: 100%;
+		  width: 100%;
+		  display: flex;
+		  align-items: center;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		  background-position: center;
+		}
+		.square-wrapper {
+		  text-align: center;
+		  margin: 3px;
+		  position: relative;
+		  display: inline-block;
+		}
+		.square {
+		  background-color: transparent;
+		}
+		.square img {
+			width: 100%;
+			
+		}
+
+/*
 		#hex1 {
 		  width: 10px;
 		  height: 10px;
@@ -28,6 +52,13 @@
 		  margin: 3px;
 		  position: relative;
 		  display: inline-block;
+		}
+		.hexagon-wrapper img {
+			position: absolute;
+			right: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
 		}
 		.hexagon {
 		  height: calc(100% * 0.57735);
@@ -61,13 +92,66 @@
 		  content: '';
 		  transform: rotateZ(-60deg);
 		}
+*/
+		/*--------------------------*/
 
+/*		.container {
+		  margin: 10px;
+		  font-size:16px;
+		}
+
+		.hex {
+		  position: relative;
+		  font-size:10em;
+		  transform: scale(1,.9);
+		  float:left;
+		  cursor:pointer;
+		  font-family: 'unifont';
+		}
+		.hex::after {
+		  content: '⬢';
+		  transform: scale(1.1);
+		  position: absolute;
+		  left: 0;
+		  top:0;
+		  z-index: -1;
+		}
+		.hex::before {
+		  content: ' ';
+		  width: 64px;
+		  height: 64px;
+		  z-index:1;
+		  position: absolute;
+		  top:50%;
+		  left:30px;
+		  display:block;
+		  margin-top:-32px;
+		}
+		.content {
+		  background color
+		  color:{{color}};
+		}
+		.content::after {
+		  background border color
+		  color:#999;
+		}
+		.content::before {
+		  background image
+		  background: url('http://i.imgur.com/0eBXG.png');
+		}
+*/
 	</style>
 
-		<div id="hex1" class="hexagon-wrapper">
-		    <div id="color1" class="hexagon"><h5>test</h5></div>
+		<div id="square1" class="square-wrapper">
+		    <div id="color1" class="square">
+		    	<!-- <img src="../images/devnet-octocat.png"> -->
+		    	<!-- <p>PHP</p> -->
+		    </div>
 		</div>
 	
+
+	 	<!-- <div class="hex content">⬢</div> -->
+
   </template>
 
   <script>
@@ -75,23 +159,51 @@
       is: 'devnet-hexabadges',
 
       ready: function() {
-      	console.log(this.$.hex1);
-      	this.$.hex1.style.width = this.width+'px';
-      	this.$.hex1.style.height = this.height+'px';
+      	console.log(this.$.color1.style.background);
+      	this.$.square1.style.width = this.width + 'px';
+      	this.$.square1.style.height = this.height + 'px';
+      	this.$.color1.style.backgroundImage = 'url(http://localhost:8080' + this.backgroundImage + ')';
+      	// this.$.content::after.style.color = this.border;
+      	// this.$.content::before.style.background = this.background;
+      	// this.$.hex.style.transform = this.color;
       },
 
       properties: {
       	width: {
       		type: Number,
-      		value: 0,
+      		value: "100",
       		reflectedToAttributes: true
       	},
       	height: {
       		type: Number,
-      		value: 0,
+      		value: "100",
       		reflectedToAttributes: true
+      	},
+      	backgroundImage: {
+      		type: String,
+      		value: "../images/hexagon-twitter.png",
+      		reflectedToAttributes: true
+      	},
+      	text: {
+      		type: String,
       	}
-      }
+      	// --hexabadges-size-x: {
+      	// 	type: Number,
+      	// 	value: 1,
+      	// 	reflectedToAttributes: true
+      	// },
+      	// --hexabadges-size-y: {
+      	// 	type: Number,
+      	// 	value: .9,
+      	// 	reflectedToAttributes: true
+      	// }
+      },
+
+      // changeSize: function() {
+      // 	this.customStyle['--hexabadges-size-x'] = '1';
+      // 	this.customStyle['--hexabadges-size-y'] = '.9';
+      // 	this.updateStyles();
+      // }
     });
   </script>
 
