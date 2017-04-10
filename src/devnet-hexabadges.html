@@ -10,6 +10,7 @@
 		#square1 {
 		  width: 10px;
 		  height: 10px;
+		  font-size: 30px;
 		}
 		#color1 {
 		  
@@ -24,17 +25,19 @@
 		  background-position: center;
 		}
 		.square-wrapper {
-		  text-align: center;
 		  margin: 3px;
 		  position: relative;
 		  display: inline-block;
+		}
+		#square1 p {
+		  margin: 0 auto;
+		  color: white;
 		}
 		.square {
 		  background-color: transparent;
 		}
 		.square img {
 			width: 100%;
-			
 		}
 
 /*
@@ -143,9 +146,10 @@
 	</style>
 
 		<div id="square1" class="square-wrapper">
+			<!-- <p>PHP</p> -->
 		    <div id="color1" class="square">
 		    	<!-- <img src="../images/devnet-octocat.png"> -->
-		    	<!-- <p>PHP</p> -->
+		    	<p>{{text}}</p>
 		    </div>
 		</div>
 	
@@ -159,10 +163,13 @@
       is: 'devnet-hexabadges',
 
       ready: function() {
-      	console.log(this.$.color1.style.background);
+      	// console.log(this.$.color1.style.background);
       	this.$.square1.style.width = this.width + 'px';
       	this.$.square1.style.height = this.height + 'px';
+      	this.$.square1.style.fontSize = this.font + 'px';
       	this.$.color1.style.backgroundImage = 'url(http://localhost:8080' + this.backgroundImage + ')';
+      	this.$.badgesText = this.text;
+      	console.log(this.$.badgesText);
       	// this.$.content::after.style.color = this.border;
       	// this.$.content::before.style.background = this.background;
       	// this.$.hex.style.transform = this.color;
@@ -186,6 +193,13 @@
       	},
       	text: {
       		type: String,
+      		// value: "hello",
+      		// reflectedToAttributes: true
+      	},
+      	font: {
+      		type: Number,
+      		value: "15px",
+      		reflectedToAttributes: true
       	}
       	// --hexabadges-size-x: {
       	// 	type: Number,
