@@ -10,78 +10,9 @@
 
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="my-icons.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-login">
-    }
-
-    .left,
-    .right,
-    paper-input {
-      margin-left: 5%;
-    }
-
-    paper-input {
-      width: 40%;
-    }
-
-    .register {
-      margin-top: 2%;
-    	margin-bottom: 2%;
-      text-align: center;
-      background: #89B9C9;
-    }
-
-    .register a{  
-      color: white;
-    }
-
-    paper-button {
-    	font-weight: bold;
-    }
-
-    paper-button a {
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-  	paper-button img {
-  		width: 50px;
-  	}
-
-  	.facebook,
-  	.google {
-  		width:80px;
-  		margin-left: 5%;
-      float: left;
-  	}
-
-  	.clearfix {
-        clear: both;
-      }
-
-   	.submit {
-      margin-top: 5%;
-   		margin-right: 5%;
-      background: #3AA6C9;
-      color: white;
-   	}
-
-    .reg {
-      text-align: center
-    }
-
-  </style>
-  <template>
-    <div class="card">
-    	<div class="left">
-
-      <paper-input name="username" label="Username"></paper-input>
-      <paper-input name="password" label="Password"></paper-input>
-
-        <div>
-        <paper-button raised class="submit">Login</paper-button>
-=======
     <style include="shared-styles iron-flex iron-flex-factors" is="custom-style">
          :host {
             display: block;
@@ -237,10 +168,6 @@
                 if (window.localStorage.getItem('users') != null) {
                     window.location = location.origin + "?dialog=true&type=error&message=" + encodeURI("You must logout before accessing this page");
                 }
-                // this.$.authHandler.app = window.app.app.app;
-                // console.log(window.app.app.app);
-                // console.log(this.$.appGlobal.app);
-                // console.log(window.app.app.app.auth());
             },
             loginHandler: function(e) {
                 var username = this.$.usernameInput.value;
@@ -270,14 +197,17 @@
                     .then(successHandler)
                     .catch(errorHandler);
             },
-            successHandler: function(response) {
-                var users = {};
-                users.provider = response;
-                users.data = {};
+            successHandler: function(response, provider) {
+                var users = {};                
+                if(provider == "google"){
+                    users.provider = response.provider;
+                    users.data = response.user;
+                }else{
+                    users.provider = response;
+                    users.data = {};
+                }
                 window.localStorage.setItem("users", JSON.stringify(users));
-
                 window.location = location.origin + "?dialog=true&type=success&message=" + encodeURI("You have been successfully login");
-
             },
             errorHandler: function(response) {
                 window.app.dialog.text = response.message;
