@@ -7,8 +7,18 @@
 
 <dom-module id="devnet-skills">
   <template>
-    <style include="iron-flex iron-flex-factors">
-      
+    <style is="custom-style" include="iron-flex iron-flex-factors">
+
+    :host {
+      display: block;
+      --hexabadges-size-x: .5;
+      --hexabadges-size-y: .45;
+    }
+
+    .hex {
+      color: #ffffff;
+    }
+
     span {
     	font-weight: bold;
     }
@@ -131,8 +141,9 @@
         </div>
         
         <div class="layout horizontal wrap badges">
-          <devnet-hexabadges width="50" height="50"></devnet-hexabadges>
-          <devnet-hexabadges width="50" height="50"></devnet-hexabadges>
+          
+          <devnet-hexabadges width="50" height="50" background-image="/images/hexagon-twitter.png"></devnet-hexabadges>
+          <devnet-hexabadges width="50" height="50" background-image="/images/hexagon-twitter.png"></devnet-hexabadges>
         </div>
       </div>
 
