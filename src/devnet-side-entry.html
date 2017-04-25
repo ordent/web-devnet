@@ -1,74 +1,82 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/responsive-flex/responsive-flex.html">
 <link rel="import" href="my-icons.html">
 
 <dom-module id="devnet-side-entry">
-    <style is="custom-style" include="iron-flex">
+    <style is="custom-style" include="responsive-flex">
          :host {
             display: block;
             margin-top: 20px;
         }
         
-        .side-entry-avatar img {
+        .side-entry__avatar img {
             width: 100px;
         }
         
-        .side-entry-content h5 {
+        .side-entry__content h5 {
             margin: 0;
         }
         
-        .side-entry-content p {
+        .side-entry__content p {
             margin: 0;
             color: gray;
             font-size: 0.8em;
         }
         
-        .side-entry-content p .author {
+        .side-entry__content p .author {
             font-weight: 800;
         }
         
-        .side-entry-content .meta {
+        .side-entry__content .meta {
             margin-top: 10px;
         }
         
         .column {
-            width: 30px;
+        }
+        .column iron-icon{
+          display: inline-block;
         }
         
-        .column-hearts iron-icon {
+        .side-entry__hearts iron-icon {
             color: deeppink;
         }
+
+        .side-entry__hearts-text, .side-entry__comments-text, .side-entry__two-dots{
+          display: inline-block;
+        }
         
-        .column-two-dots iron-icon {
+        .side-entry__two-dots iron-icon {
             color: seagreen;
         }
         
-        .column-comments iron-icon {
+        .side-entry__comments iron-icon {
             color: dimgray;
         }
     </style>
     <template>
-      <div class="side-entry-wrapper layout horizontal">
-        <div class="side-entry-avatar">
+      <div class="side-entry-wrapper row">
+        <div class="side-entry__avatar responsive-lg-4 responsive-xl-4">
           <img src="../images/devnet-octocat.png" alt="">
         </div>
-        <div class="side-entry-content">
+        <div class="side-entry__content responsive-lg-8 responsive-xl-8">
           <h5>How to Bootstrap a New Advisor Practice</h5>
           <p><span class="author">Jonathan</span> - It can be hard for a new</p>
-          <div class="meta layout horizontal">
-            <div class="column column-hearts">
+          <div class="meta row">
+            <div class="column side-entry__hearts responsive-lg-4 responsive-xl-4">
               <iron-icon icon="my-icons2:hearts"></iron-icon>
-            </div>
-            <div class="column column-hearts-text">
+              <div class="column side-entry__hearts-text">
               13
+              </div>
             </div>
-            <div class="column column-comments">
+            
+            <div class="column side-entry__comments responsive-lg-4 responsive-xl-4">
               <iron-icon icon="my-icons2:comments"></iron-icon>
+              <div class="column side-entry__comments-text">
+                13
             </div>
-            <div class="column column-comments-text">
-              13
             </div>
-            <div class="column column-two-dots">
+            
+            <div class="column side-entry__two-dots responsive-lg-4 responsive-xl-r">
               <iron-icon icon="my-icons2:two-dots"></iron-icon>
             </div>
           </div>

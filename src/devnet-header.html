@@ -1,190 +1,200 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/responsive-flex/responsive-flex.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
 
-<link rel="import" href="devnet-navigation.html">
-<link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-header">
   <template>
-    <style include="shared-styles iron-flex iron-flex-factors">
-       :host {
-        display: block;
+    <style is="custom-style" include="responsive-flex">
+    :host{
+      display: block;
+    }
+    .header{
+      padding: 10px 0;
+    }
+    .header--logo__primary{
+      width: 150px;
+      margin: 10px 0;
+      padding: 5px 0;
+    }
+    .header--input__primary{
+      font-size: 1.2em;
+      padding: 5px;
+      width: 90%;
+      border-radius: 5px;                                                                                                                                                                                                                                                                                
+      margin-top:10px;
+    }
+    a.header--button__register{
+      margin-left: auto;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .header--button__register paper-button{
+      margin-left: auto;
+      border-radius: 5px;
+      background: #7CC576;
+      font-size: 0.8em;
+      padding: 10px 20px;
+      margin-top:10px;
+    }
+    .header--button__search{
+      background: #7CC576;
+      border-radius: 50%;
+      display: none;
+    }
+    .navigation{
+      background: #FFFFFF;
+    }
+    .navigation__intro{
+      color: lightgray;
+    }
+    .navigation__button--show-all{
+      background: var(--app-primary-color);
+      border-radius: 50%;
+      margin: 10px 0;
+      margin-left: auto;
+    }
+    .navigation--link__item{
+      text-decoration: none;
+      color: var(--app-primary-color);
+      padding: 15px;
+      cursor: pointer;
+    }
+    .navigation--link__item:hover{
+      background: var(--app-primary-color);
+      color: #FFFFFF;
+    }
+
+    .navigation__intro paper-icon-button{
+      display: none;
+    }
+
+    .navigation__main{
+      -webkit-transition: all 0.4ms ease;
+      -moz-transition: all 0.4ms ease;
+      -ms-transition: all 0.4ms ease;
+      -o-transition: all 0.4ms ease;
+      transition: all 0.4ms ease;
+    }
+
+    @media(max-width:421px){
+      .header--logo__wrapper{
+        text-align: center;
       }
-      
-     
-      
-      .navbar {
-        width: 80%;
-      }
-      
-      paper-button.green {
-        background: var(--secondary-color);
-        color: #fff;
-        font-size: 0.8em;
-        padding: 10px;
-      }
-      
-      paper-button a {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-      }
-      
-      .btn-send {}
-      
-      .navbar paper-icon-button {
-        color: white;
-        float: left;
-        height: 60px;
-        width: 60px;
-        margin: -.2em 3em 0 0;
-      }
-      
-      .navbar-search {
-      }
-      
-      .navbar-search input[type=text] {
-        border: 0;
-        border-radius: .2em;
-        box-shadow: 0 .2em .2em rgba(0, 0, 0, 0.35);
-        padding: .6em;
-        margin-left: 40px;
-        min-height: 2em;
-        outline: none;
-        display: block;
-        width: 80%;
-      }
-      
-      .navbar {
+      .header--logo__primary{
         margin: 0 auto;
       }
-      
-      .login {
-        border-radius: 10px;
-        margin: 5%;
+      .header--input__primary{
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        display: none;
       }
-      
-      .login a {
-        text-decoration: none;
-        margin: auto;
-        text-align: center;
-        color: white;
-        padding: 2em;
-      }
-      
-      .login span {
-        font-weight: bold;
-      }
-      
-
-      .green {
-        background: #7BC674;
-        color: white;
-      }
-      
-
-      .brand img {
-        width: 75%;
-        min-width: 100px;
-        display: block;
-        margin: 5px auto;
-      }
-      .right{
+      .header--button__register paper-button{
+        margin: 0;
         margin-left: auto;
       }
-      .column-brands{
-
+      .header--button__search{
+      display: inline-block;
+    }
+      .navigation__intro p{
+        display: inline-block;
       }
-
-      @media screen and (max-width: 480px) {
-        .navbar{
-          flex-wrap: wrap;
-        }
-        .column{
-          margin: 5px auto;
-        }
-        .column-brands, .column-search{
-          max-width: 100%;
-          flex-basis: 100%;
-        }
-        .column-search .navbar-search input[type=text]{
-          margin : 10px 0;
-          width: 100%;
-          flex-basis: 100%;
-        }
-
+      .navigation__intro paper-icon-button{
+        margin-top: 10px;
+        background: var(--app-primary-color);
+        border-radius: 50%;
+        display: inline-block;
       }
-
-    </style>
-    <div class="navbar layout horizontal">
-      <div class="column column-brands flex-1">
-        <a href="/" class="brand">
-          <img src="../images/devnet-logo.png" alt="S{}LVE.ID">
-        </a>
-      </div>
-      <div class="column column-search flex-2">
-        <form class="navbar-search" action="">
-          <input type="text">
-        </form>
-      </div>
-      <div class="column column-users flex-2 layout horizontal">
-        
-        <template is="dom-if" if={{users}}>
-          <div class="column flex-1 hide-sm">
+      .navigation--link__item{
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+      }
+      .navigation__button--show-all{
+        display: none;
+      }
+    }
+  </style>
+    <div class="container">
+      <div class="row header">
+        <div class="responsive-xl-2 responsive-lg-2 responsive-sm-12 header--logo__wrapper">
           <a href="/">
-            <paper-button>Home</paper-button>
-          </a>
-          <a href="/profile">
-            <paper-button>Profile</paper-button>
+            <img src="../images/header--logo__small.png" alt="" class="header--logo__primary">
           </a>
         </div>
-        </template>
-        
-        <div class="column flex-1 layout horizontal">
-          <a href="/login" class="column right">
-            <paper-button raised class="green">Sign In/Sign Up</paper-button>
-          </a>
+        <div class="responsive-xl-10 responsive-lg-10">
+          <div class="row">
+            <div class="responsive-xl-6 responsive-lg-6 responsive-sm-12">
+              <input type="text" class="header--input__primary">
+            </div>
+            <div class="responsive-xl-6 responsive-lg-6 responsive-sm-12 row">
+              <paper-icon-button icon="my-icons:menu" raised class="header--button__search">
+              </paper-icon-button>
+              <a href="/login" tabindex="-1" class="header--button__register">
+                <paper-button raised >
+                  Sign In / Sign Up
+                </paper-button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+     <div class="navigation">
+        <div class="container">
+          <div class="row">
+            <div class="responsive-xl-1 responsive-lg-1 responsive-sm-12 navigation__intro row">
+              <p>For You:</p> 
+              <div class="responsive-right responsive-sm-4">
+                <paper-icon-button icon="my-icons:menu" raised on-tap="_toggleNavigationDisplay"></paper-icon-button> <paper-icon-button icon="my-icons:chevron-right" ></paper-icon-button>
+              </div>
+            </div>
+            <div class="responsive-xl-10 responsive-lg-10 navigation__main row" id="navigationMain">
+              
+              <template is="dom-repeat" items={{navigations}} 
+                as=item>
+                <a href="{{item.url}}" class="navigation--link__item">{{item.text}}</a>
+              </template>
+              
+            </div>
+            <div class="responsive-xl-1 responsive-lg-1 navigation__end row">
+              <paper-icon-button icon="my-icons:chevron-right" class="navigation__button--show-all"></paper-icon-button>
+              <!--<a href="" class="navigation--link__item">View All</a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <firebase-document id="navigationHandler" path="/navigations" data="{{navigationsStream}}"> </firebase-document>
   </template>
   <script>
     Polymer({
-      is: 'devnet-header',
-      properties: {
-        navigationList: {
-          type: Array,
-          value: function () {
-            return [];
-          },
-          reflectToAttribute: true
+      is : 'devnet-header',
+      properties : {
+        navigations: {
+          type: Array
         },
-        users : {
-          type: Object
+        navigationsStream : {
+          type: Object,
+          observer : 'navigationChanged'
         }
       },
-      ready: function () {
-        this.users = window.localStorage.getItem("users");
+      ready : function(){
       },
-      isTest : function(){
-        return "test";
+      navigationChanged : function(){
+        console.log(this.navigationsStream);
       },
-      isNavigationListNotEmpty: function () {
-        if (this.navigationList.length == 0) {
-          return true;
+      _toggleNavigationDisplay : function(){
+        if(this.$.navigationMain.style.display == "none"){
+          this.$.navigationMain.style.height = "auto";
+          this.$.navigationMain.style.display = "";
+        }else{
+          this.$.navigationMain.style.height = 0;
+          this.$.navigationMain.style.display = "none";          
         }
-        return false;
-      },
-      isUserExist : function(){
-        if(window.localStorage.getItem("users") != null){
-          return true;
-        }
-        return false;
-      },
-      toggleDialog: function () {
-        this.$.dialog.toggle();
       }
     });
   </script>

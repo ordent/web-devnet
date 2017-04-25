@@ -1,0 +1,212 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/responsive-flex/responsive-flex.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="my-icons.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="devnet-profile">
+  <template>
+    <style is="custom-style" include="responsive-flex shared-styles">
+      :host{
+        display: block;
+        margin-top: 40px;
+        border-radius: 10px;
+      }
+      .profile__information{
+        background: #333 url('../images/black-bg.jpg') no-repeat center;
+        background-size: cover;
+      }
+      .profile__avatar{
+        text-align: center;
+      }
+      .profile__avatar h3{
+        margin: 10px 0 0 0;
+        color: #FFFFFF;
+      }
+      .profile__avatar p{
+        margin: 0;
+        color: #FFFFFF;
+      }
+      .profile__avatar img{
+        width: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+      .profile__bio{
+        color: #FFFFFF;
+        padding: 0 20px;
+      }
+      .profile__bio h5{
+        margin: 0;
+        font-size: 1em;
+      }
+      .profile__badges h5{
+        color: #FFFFFF;
+        font-size: 1em;
+        margin: 0;        
+      }
+      .card{
+        border-radius: 10px;
+      }
+
+      .card h4{
+        margin: 0;
+        color: #333;
+      }
+
+      .profile__bio p{
+        margin: 0 0 40px 0;
+        font-weight: 300;
+      }
+      .social-icon{
+        background: #FFFFFF;
+        border-radius: 50%;
+        color: #333;
+      }
+
+      .card{
+        margin-bottom: 40px;
+        padding: 40px
+      }
+
+      .profile__skills, .profile__portfolio, .profile__bookmark{
+        background:#FFFFFF;
+      }
+
+      .profile__featured img{
+        min-height: 150px;
+        background: gray;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .profile__featured h5{
+        margin-bottom: 0;
+        font-size: 1em;
+      }
+
+      .profile__featured p{
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .profile__featured--wrapper{
+        padding: 0 10px;
+        margin-bottom: 20px;
+      }
+
+      .profile__featured{
+        background: #EEEEEE;
+        box-sizing: border-box;
+        padding: 0 10px 20px 10px;
+      }
+
+    </style>
+
+    <div class="container">
+      <div class="profile__information card">
+        <div class="row">
+          <div class="responsive-lg-3 responsive-xl-3 profile__avatar">
+            <img src="../images/devnet-octocat.png" alt="">
+            <h3>Red Fox</h3>
+            <p>solve.id/redfox</p>
+          </div>
+          <div class="responsive-lg-6 responsive-xl-6 profile__bio">
+            <h5>Bio</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic veniam, sapiente ex atque dolor asperiores, enim. Voluptates tempora enim veniam laudantium, iusto, aspernatur, ex neque dolorem magnam harum iure ducimus!</p>
+            <h5>Social Media</h5>
+            
+            <paper-icon-button icon="my-icons2:facebook" class="social-icon"></paper-icon-button>
+            <paper-icon-button icon="my-icons2:twitter" class="social-icon"></paper-icon-button>
+              <paper-icon-button icon="my-icons2:github" class="social-icon"></paper-icon-button>
+          </div>
+          <div class="responsive-lg-3 responsive-xl-3 profile__badges">
+            <h5>Badges</h5>
+          </div>
+        </div>
+      </div>
+    
+    <div class="profile__skills card">
+      <h4>Featured Skill</h4>
+      <div class="row">
+        <div class="responsive-lg-3 responsive-xl-3"></div>
+        <div class="responsive-lg-3 responsive-xl-3"></div>
+        <div class="responsive-lg-3 responsive-xl-3"></div>
+        <div class="responsive-lg-3 responsive-xl-3"></div>
+      </div>
+    </div>
+
+    <div class="profile__portfolio card">
+      <h4>Portfolio</h4>
+      <div class="row">
+        <div class="responsive-lg-4 responsive-xl-4 profile__featured--wrapper">
+          <div class="profile__featured">
+            <img src="" alt="">
+            <h5>Project Google Dev</h5>
+            <p>Frontend Developer</p>
+          </div>  
+        </div>
+        <div class="responsive-lg-4 responsive-xl-4 profile__featured--wrapper">
+          <div class="profile__featured">
+            <img src="" alt="">
+            <h5>Re-Design AWWWARDS</h5>
+            <p>Frontend Developer</p>
+          </div>
+        </div>
+        <div class="responsive-lg-4 responsive-xl-4 profile__featured--wrapper">
+          <div class="profile__featured">
+            <img src="" alt="">
+            <h5>Tokopedia</h5>
+            <p>Frontend Developer</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="responsive-lg-12 responsive-xl-12 text-center">
+          <paper-button raised> Loadmore </paper-button>
+        </div>
+      </div>
+    </div>
+
+     <div class="profile__bookmark card">
+      <h4>Bookmarks</h4>
+      <div class="row">
+        <div class="responsive-lg-4 responsive-xl-4 profile__featured--wrapper">
+          <div class="profile__featured">
+            <img src="" alt="">
+            <h5>HTML5 & CSS 3</h5>
+            <p>13 Article</p>
+          </div>
+        </div>
+        <div class="responsive-lg-4 responsive-xl-4 profile__featured--wrapper">
+          <div class="profile__featured">
+            <img src="" alt="">
+            <h5>Javascript</h5>
+            <p>13 Article</p>
+          </div>
+        </div>
+        <div class="responsive-lg-4 responsive-xl-4 profile__featured--wrapper">
+          <div class="profile__featured">
+            <img src="" alt="">
+            <h5>Angular JS</h5>
+            <p>13 Article</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="responsive-lg-12 responsive-xl-12 text-center">
+          <paper-button raised> Loadmore </paper-button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </template>
+  <script>
+    Polymer({
+
+    });
+  </script>
+</dom-module>

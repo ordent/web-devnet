@@ -1,12 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-
+<link rel="import" href="../bower_components/responsive-flex/responsive-flex.html">
 <link rel="import" href="my-icons.html">
+
 <dom-module id="devnet-question">
     <template>
-		<style is="custom-style" include="iron-flex iron-flex-factors">
+		<style is="custom-style" include="responsive-flex">
 			:host {
 				background: #FFF;
 				display: block;
@@ -17,76 +17,74 @@
 				color:lightgrey;
 			}
 			
-			.header{
+			.entry__header{
 				padding: 20px;
 			}
-			.entry-avatar{
-				width: 10%;
+			.entry__avatar{
 			}
-			.entry-avatar img{
+			.entry__avatar img{
 				border-radius:50%;
 			}
-			.entry-main{
-				width: 85%;
+			.entry__main{
 				color: lightgrey;
 			}
-			.entry-main h5{
+			.entry__main h5{
 				margin: 0;
 				font-weight: 400;
 			}
-			.entry-main a{
+			.entry__main a{
 				text-decoration: none;
 				font-size: 1.4em;
 				color: var(--primary-color);
 			}
-			.entry-main p{
+			.entry__main p{
 				font-size:0.8em;
 				color: darkgray;
 				margin: 0;
 			}
-			.entry-avatar img{
+			.entry__avatar img{
 				width: 50px; 
 				height: 50px; 
 				float: left; 
 				border-radius: 50%;
 			}
-			.entry-options{
-				widows: 5%;
+			.entry__options{
 			}
-			.entry-content{
+			.entry__content{
 				padding:20px;
 				background: #FCFCFC;
 				margin-bottom: 20px;
 			}
-			.entry-content .title{
+			.entry__content .title{
 				text-decoration: none;
 				color:#333;				
 			}
-			.entry-content p{
+			.entry__content p{
 				color:#333;
 				font-weight: 300;
 				font-size: 0.9em;
 			}
 
-			.entry-reaction{
+			.entry__reaction{
 				padding:20px 0;
+        justify-content: flex-start;
 			}
 
-			.entry-reaction .column-bookmarks{
+			.entry__reaction .column__bookmarks{
 				margin-left:auto;
 			}
-			.entry-reaction iron-icon{
+			.entry__reaction iron-icon{
 				margin-right: 10px;
 			}
-			.column-likes iron-icon{
+			.column__likes iron-icon{
 				color: deeppink;
 			}
 
-			.column-comments{
-				width:80px;
+			.column__comments{
 			}
-			.column-answer{
+			.column__answer{
 				margin-left:auto;
+        padding-right: 20px;
 			}
 
 			a {
@@ -105,27 +103,27 @@
 				border-radius: 50%;
 			}
 
-			.column-bookmarks iron-icon{
+			.column__bookmarks iron-icon{
 				color: var(--primary-color);
 			}
 			
 		</style>
 
 		<div class="card">
-			<div class="header layout horizontal">
-				<div class="entry-avatar">
+			<div class="entry__header row">
+				<div class="entry__avatar responsive-lg-1 responsive-xl-1">
 					<a href="/user"><img src="../images/devnet-octocat.png"></a>
 				</div>
-				<div class="entry-main">
+				<div class="entry__main responsive-lg-10 responsive-xl-10">
 					<h5><a href="">Justin</a> ask about <span>CSS</span></h5>
 					<p>13 Minutes Ago</p>
 				</div>
-				<div class="entry-options">
+				<div class="entry__options responsive-lg-1 responsive-xl-1">
 					<paper-icon-button icon="my-icons2:two-dots"></paper-icon-button>
 				</div>
 			</div>
 
-			<div class="entry-content">
+			<div class="entry__content">
 				<a href="" class="title">
 					<h3>
 						Centering things
@@ -134,27 +132,18 @@
 				<p>How to make a centered vertically and horizontally block-type element ?
 				</p>
 			</div>
-			<div class="clearfix">
-			</div>
-			<div class="entry-reaction layout horizontal">
-				<div class=" column-likes">
+			
+			<div class="entry__reaction row">
+				<div class=" column__likes responsive-lg-2 responsive-xl-2">
 					<paper-button><iron-icon icon="my-icons2:hearts"></iron-icon> 16</paper-button>
 				</div>
-				<div class=" column-comments">
+				<div class=" column__comments responsive-lg-2 responsive-xl-2">
 					<paper-button><iron-icon icon="my-icons2:comments"></iron-icon> 16</paper-button>				
 				</div>
-				<div class=" column-answer">
+				<div class=" column__answer responsive-lg-2 responsive-xl-2">
 					<paper-button raised class="green" name="answer">Answer</paper-button>
 				</div>
 			</div>
-
-
-
-			<div class="clearfix">
-			</div>
-
-		</div>
-
 		</div>
 
 	</template>

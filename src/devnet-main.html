@@ -1,40 +1,36 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/responsive-flex/responsive-flex.html">
 <link rel="import" href="devnet-header.html">
-<link rel="import" href="devnet-navigation.html">
-<link rel="import" href="devnet-sidebar.html">
 <link rel="import" href="devnet-entry.html">
-<link rel="import" href="shared-styles.html">
-<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="devnet-sidebar.html">
 
+<link rel="import" href="shared-styles.html">
 <dom-module id="devnet-main">
-    <style include="shared-styles iron-flex iron-flex-factors">
+    <style is="custom-style" include="shared-styles responsive-flex">
          :host {
             display: block;
-            /*min-height: 800px;*/
-        }
-
-        
+        }        
         .right {}
     </style>
     <template>
-    <div class="wrapper layout horizontal">
-      <div class="content left child flex-2">
-        <!--<devnet-article></devnet-article>-->
-        <devnet-entry></devnet-entry>
-      </div>
-      <div class="sidebar right child flex-1">
-        <devnet-sidebar></devnet-sidebar>
-      </div>
-    </div>
+      <div class="container">
+        <div class="row">
+          <div class="responsive-lg-8 responsive-xl-8">
+            <devnet-entry></devnet-entry>
 
+          </div>
+          <div class="responsive-lg-4 responsive-xl-4">
+            <devnet-sidebar></devnet-sidebar> 
+          </div>
+        </div>
+      </div>
   </template>
     <script>
         Polymer({
             is: 'devnet-main',
             properties: {},
             ready : function(){
+
             }
         });
     </script>

@@ -1,0 +1,81 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="devnet-badges">
+  <template>
+    <style is="custom-style" include="iron-flex iron-flex-factors">
+      #square1 {
+        width: 10px;
+        height: 10px;
+      }
+      
+      #color1 {
+        background-image: url('../images/devnet-octocat.png');
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      
+      .square-wrapper {
+        text-align: center;
+        margin: 3px;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .square {
+        background-color: transparent;
+      }
+      
+      .square img {
+        width: 100%;
+      }
+    </style>
+
+    <div id="square1" class="square-wrapper">
+      <div id="color1" class="square">
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'devnet-badges',
+
+      ready: function () {
+        console.log(this.$.color1.style.background);
+        this.$.square1.style.width = this.width + 'px';
+        this.$.square1.style.height = this.height + 'px';
+        this.$.color1.style.backgroundImage = 'url(' + window.location.origin + "/" + this.backgroundImage + ')';
+      },
+
+      properties: {
+        width: {
+          type: Number,
+          value: "100",
+          reflectedToAttributes: true
+        },
+        height: {
+          type: Number,
+          value: "100",
+          reflectedToAttributes: true
+        },
+        backgroundImage: {
+          type: String,
+          value: "../images/hexagon-twitter.png",
+          reflectedToAttributes: true
+        },
+        text: {
+          type: String,
+        }
+      }
+    });
+  </script>
+
+</dom-module>

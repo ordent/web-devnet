@@ -1,47 +1,60 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/responsive-flex/responsive-flex.html">
 
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="devnet-events">
   <template>
-  	<style include="shared-styles">
-		:host{
-			background: url("../images/events.jpg");
-			display: block;
-			background-size: cover;
-			border-radius:20px;
-			color: #FFF;
-			padding: 20px;
-		}
-	.card .events h5 {
-		background: blue; color: white; width: 50%; text-align: center; padding: 2%;
-	}
+    <style include="shared-styles responsive-flex" is="custom-styles">
+       :host {
+        background: url("../images/events.jpg");
+        display: block;
+        background-size: cover;
+        border-radius: 20px;
+        color: #FFF;
+        padding: 20px;
+      }
 
-	.card .events button {
-		background: blue; color: white; width: 100%; margin-top: 25%; text-align: center; padding: 5%;
-	}
-	paper-button.date{
-		background : var(--primary-color);
-		text-transform: capitalize;
-		font-size:0.8em;		
-	}
-	paper-button.primary{
-		background : var(--primary-color);
-		width: 100%;
-		margin-top:80px;
-	}
+      .card{
+        padding: 20px;
+      }
+      
+      .card .events h5 {
+        background: blue;
+        color: white;
+        text-align: center;
 
-  	</style>
+      }
+      
+      .card .events button {
+        background: blue;
+        color: white;
+        margin-top: 25%;
+        text-align: center;
+      }
+      
+      paper-button.date {
+        background: var(--primary-color);
+        text-transform: capitalize;
+        font-size: 0.8em;
+      }
+      
+      paper-button.primary {
+        background: var(--primary-color);
+        width: 100%;
+        margin-top: 80px;
+      }
+    </style>
 
-  	<div class="card" style="padding: 2%">
-		<div class="events">
-			<p>Upcoming Events</p>
-			<h2>INDONESIA ANDROID KEJAR 2017</h2>
-			<paper-button class="date">28 Februari 2017</paper-button>
-			<paper-button raised class="primary">VIEW EVENTS</paper-button>
-		</div>
-	</div>
+    <div class="card">
+      <div class="events">
+        <p>Upcoming Events</p>
+        <h2>INDONESIA ANDROID KEJAR 2017</h2>
+        <paper-button class="date">28 Februari 2017</paper-button>
+        <paper-button raised class="primary">VIEW EVENTS</paper-button>
+      </div>
+    </div>
 
   </template>
 
